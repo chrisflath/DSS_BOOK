@@ -1,0 +1,2712 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> &#8212; Decision Support Systems</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="01_Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Decision Support Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   DSS_BOOK
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <div class="bar_title">
+   </div>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/02_Descriptive_Analytics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/02_Descriptive_Analytics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <div class="bar_title">
+   </div>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#descriptive-analytics-with-pandas">
+   Descriptive Analytics with Pandas
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     Motivation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#two-ways-of-exploring-data">
+       Two ways of exploring data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exploratory-data-analysis-eda">
+       Exploratory data analysis (EDA)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#building-intuition-about-the-data">
+         Building intuition about the data
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-pandas">
+     Introducing Pandas
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#typical-use-cases">
+       Typical Use Cases
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pandas-within-the-data-science-toolkit">
+       Pandas within the data science toolkit
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#installation-and-import">
+       Installation and Import
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-and-dataframes">
+     Series and DataFrames
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#creating-dataframes-from-scratch">
+       Creating DataFrames from scratch
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-dataframes">
+       Indexing DataFrames
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-and-writing-csvs">
+       Reading and writing CSVs
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-dataframe-operations-viewing">
+     Basic DataFrame operations: Viewing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#viewing-your-data">
+       Viewing your data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-info-about-your-data-info">
+       Getting info about your data
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .info()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-info-about-your-data-shape">
+       Getting info about your data:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .shape
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#describing-your-variables">
+       Describing your variables
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#describing-categorical-variables">
+       Describing Categorical Variables
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#relationships-between-continuous-variables">
+       Relationships between continuous variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-dataframe-operations-data-cleaning">
+     Basic DataFrame operations: Data Cleaning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#handling-duplicates-1">
+       Handling duplicates (1)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#handling-duplicates-2">
+       Handling duplicates (2)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inplace-operations">
+       Inplace Operations
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#column-cleanup">
+       Column cleanup
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#renaming-columns">
+       Renaming Columns
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#operating-on-many-columns">
+       Operating on many columns
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#working-with-missing-values">
+       Working with missing values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#identify-missing-values">
+       Identify missing values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#removing-null-values">
+       Removing null values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#imputation">
+       Imputation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-dataframe-operations-slicing-selecting-extracting">
+     Basic DataFrame operations: Slicing, selecting, extracting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-column">
+       By column
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-row">
+       By row
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#conditional-selections">
+       Conditional selections
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#combining-conditions">
+       Combining conditions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#combining-conditions-2">
+       Combining conditions (2)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#combining-conditions-3">
+       Combining conditions (3)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregation-and-grouping">
+     Aggregation and Grouping
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#groupby-split-apply-combine">
+       GroupBy: Split, Apply, Combine
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#column-indexing">
+       Column indexing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applying-functions">
+     Applying functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-from-an-ipython-notebook">
+       Plotting from an IPython notebook
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#matplotlib-options">
+         Matplotlib options
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scatterplot">
+       Scatterplot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#histogram">
+       Histogram
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#boxplot">
+       Boxplot
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wrapping-up">
+     Wrapping up
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="div-class-bar-title-div">
+<h1><div class='bar_title'></div><a class="headerlink" href="#div-class-bar-title-div" title="Permalink to this headline">¶</a></h1>
+<p><em>Practical Data Science</em></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="descriptive-analytics-with-pandas">
+<h1>Descriptive Analytics with Pandas<a class="headerlink" href="#descriptive-analytics-with-pandas" title="Permalink to this headline">¶</a></h1>
+<p>Nikolai Stein<br>
+Chair of Information Systems and Business Analytics</p>
+<p>Winter Semester 21/22</p>
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Motivation</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Two-ways-of-exploring-data" data-toc-modified-id="Two-ways-of-exploring-data-1.0.1"><span class="toc-item-num">1.0.1&nbsp;&nbsp;</span>Two ways of exploring data</a></span></li></ul></li><li><span><a href="#Exploratory-data-analysis-(EDA)" data-toc-modified-id="Exploratory-data-analysis-(EDA)-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Exploratory data analysis (EDA)</a></span><ul class="toc-item"><li><span><a href="#Building-intuition-about-the-data" data-toc-modified-id="Building-intuition-about-the-data-1.1.1"><span class="toc-item-num">1.1.1&nbsp;&nbsp;</span>Building intuition about the data</a></span></li></ul></li></ul></li><li><span><a href="#Introducing-Pandas" data-toc-modified-id="Introducing-Pandas-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Introducing Pandas</a></span><ul class="toc-item"><li><span><a href="#Typical-Use-Cases" data-toc-modified-id="Typical-Use-Cases-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Typical Use Cases</a></span></li><li><span><a href="#Pandas-within-the-data-science-toolkit" data-toc-modified-id="Pandas-within-the-data-science-toolkit-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Pandas within the data science toolkit</a></span></li><li><span><a href="#Installation-and-Import" data-toc-modified-id="Installation-and-Import-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Installation and Import</a></span></li></ul></li><li><span><a href="#Series-and-DataFrames" data-toc-modified-id="Series-and-DataFrames-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Series and DataFrames</a></span><ul class="toc-item"><li><span><a href="#Creating-DataFrames-from-scratch" data-toc-modified-id="Creating-DataFrames-from-scratch-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Creating DataFrames from scratch</a></span></li><li><span><a href="#Indexing-DataFrames" data-toc-modified-id="Indexing-DataFrames-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Indexing DataFrames</a></span></li><li><span><a href="#Reading-and-writing-CSVs" data-toc-modified-id="Reading-and-writing-CSVs-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Reading and writing CSVs</a></span></li></ul></li><li><span><a href="#Basic-DataFrame-operations:-Viewing" data-toc-modified-id="Basic-DataFrame-operations:-Viewing-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Basic DataFrame operations: Viewing</a></span><ul class="toc-item"><li><span><a href="#Viewing-your-data" data-toc-modified-id="Viewing-your-data-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Viewing your data</a></span></li><li><span><a href="#Getting-info-about-your-data-.info()" data-toc-modified-id="Getting-info-about-your-data-.info()-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Getting info about your data <code>.info()</code></a></span></li><li><span><a href="#Getting-info-about-your-data:-.shape" data-toc-modified-id="Getting-info-about-your-data:-.shape-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Getting info about your data: <code>.shape</code></a></span></li><li><span><a href="#Describing-your-variables" data-toc-modified-id="Describing-your-variables-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>Describing your variables</a></span></li><li><span><a href="#Describing-Categorical-Variables" data-toc-modified-id="Describing-Categorical-Variables-4.5"><span class="toc-item-num">4.5&nbsp;&nbsp;</span>Describing Categorical Variables</a></span></li><li><span><a href="#Relationships-between-continuous-variables" data-toc-modified-id="Relationships-between-continuous-variables-4.6"><span class="toc-item-num">4.6&nbsp;&nbsp;</span>Relationships between continuous variables</a></span></li></ul></li><li><span><a href="#Basic-DataFrame-operations:-Data-Cleaning" data-toc-modified-id="Basic-DataFrame-operations:-Data-Cleaning-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Basic DataFrame operations: Data Cleaning</a></span><ul class="toc-item"><li><span><a href="#Handling-duplicates-(1)" data-toc-modified-id="Handling-duplicates-(1)-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Handling duplicates (1)</a></span></li><li><span><a href="#Handling-duplicates-(2)" data-toc-modified-id="Handling-duplicates-(2)-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Handling duplicates (2)</a></span></li><li><span><a href="#Inplace-Operations" data-toc-modified-id="Inplace-Operations-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Inplace Operations</a></span></li><li><span><a href="#Column-cleanup" data-toc-modified-id="Column-cleanup-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>Column cleanup</a></span></li><li><span><a href="#Renaming-Columns" data-toc-modified-id="Renaming-Columns-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>Renaming Columns</a></span></li><li><span><a href="#Operating-on-many-columns" data-toc-modified-id="Operating-on-many-columns-5.6"><span class="toc-item-num">5.6&nbsp;&nbsp;</span>Operating on many columns</a></span></li><li><span><a href="#Working-with-missing-values" data-toc-modified-id="Working-with-missing-values-5.7"><span class="toc-item-num">5.7&nbsp;&nbsp;</span>Working with missing values</a></span></li><li><span><a href="#Identify-missing-values" data-toc-modified-id="Identify-missing-values-5.8"><span class="toc-item-num">5.8&nbsp;&nbsp;</span>Identify missing values</a></span></li><li><span><a href="#Removing-null-values" data-toc-modified-id="Removing-null-values-5.9"><span class="toc-item-num">5.9&nbsp;&nbsp;</span>Removing null values</a></span></li><li><span><a href="#Imputation" data-toc-modified-id="Imputation-5.10"><span class="toc-item-num">5.10&nbsp;&nbsp;</span>Imputation</a></span></li></ul></li><li><span><a href="#Basic-DataFrame-operations:-Slicing,-selecting,-extracting" data-toc-modified-id="Basic-DataFrame-operations:-Slicing,-selecting,-extracting-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Basic DataFrame operations: Slicing, selecting, extracting</a></span><ul class="toc-item"><li><span><a href="#By-column" data-toc-modified-id="By-column-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>By column</a></span></li><li><span><a href="#By-row" data-toc-modified-id="By-row-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>By row</a></span></li><li><span><a href="#Conditional-selections" data-toc-modified-id="Conditional-selections-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>Conditional selections</a></span></li><li><span><a href="#Combining-conditions" data-toc-modified-id="Combining-conditions-6.4"><span class="toc-item-num">6.4&nbsp;&nbsp;</span>Combining conditions</a></span></li><li><span><a href="#Combining-conditions-(2)" data-toc-modified-id="Combining-conditions-(2)-6.5"><span class="toc-item-num">6.5&nbsp;&nbsp;</span>Combining conditions (2)</a></span></li><li><span><a href="#Combining-conditions-(3)" data-toc-modified-id="Combining-conditions-(3)-6.6"><span class="toc-item-num">6.6&nbsp;&nbsp;</span>Combining conditions (3)</a></span></li></ul></li><li><span><a href="#Aggregation-and-Grouping" data-toc-modified-id="Aggregation-and-Grouping-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Aggregation and Grouping</a></span><ul class="toc-item"><li><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Column-indexing" data-toc-modified-id="Column-indexing-7.0.0.1"><span class="toc-item-num">7.0.0.1&nbsp;&nbsp;</span>Column indexing</a></span></li></ul></li></ul></li></ul></li><li><span><a href="#Applying-functions" data-toc-modified-id="Applying-functions-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Applying functions</a></span></li><li><span><a href="#Plotting" data-toc-modified-id="Plotting-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Plotting</a></span><ul class="toc-item"><li><span><a href="#Plotting-from-an-IPython-notebook" data-toc-modified-id="Plotting-from-an-IPython-notebook-9.1"><span class="toc-item-num">9.1&nbsp;&nbsp;</span>Plotting from an IPython notebook</a></span><ul class="toc-item"><li><span><a href="#Matplotlib-options" data-toc-modified-id="Matplotlib-options-9.1.1"><span class="toc-item-num">9.1.1&nbsp;&nbsp;</span>Matplotlib options</a></span></li></ul></li><li><span><a href="#Scatterplot" data-toc-modified-id="Scatterplot-9.2"><span class="toc-item-num">9.2&nbsp;&nbsp;</span>Scatterplot</a></span></li><li><span><a href="#Histogram" data-toc-modified-id="Histogram-9.3"><span class="toc-item-num">9.3&nbsp;&nbsp;</span>Histogram</a></span></li><li><span><a href="#Boxplot" data-toc-modified-id="Boxplot-9.4"><span class="toc-item-num">9.4&nbsp;&nbsp;</span>Boxplot</a></span></li></ul></li><li><span><a href="#Wrapping-up" data-toc-modified-id="Wrapping-up-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Wrapping up</a></span></li></ul></div><div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Most of the material of this lecture is adopted from</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/LearnDataSci/article-resources">https://github.com/LearnDataSci/article-resources</a></p></li>
+<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">Python Data Science Handbook</a> - Essential Tools for Working with Data” By Jake VanderPlas,  O’Reilly Media</p></li>
+</ul>
+<img src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/PDSH-cover.png" style="width:50%" /><div class="section" id="two-ways-of-exploring-data">
+<h3>Two ways of exploring data<a class="headerlink" href="#two-ways-of-exploring-data" title="Permalink to this headline">¶</a></h3>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/02/explore_data.png" style="width:60%" /></div>
+<div class="section" id="exploratory-data-analysis-eda">
+<h3>Exploratory data analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Permalink to this headline">¶</a></h3>
+<p>EDA allows to</p>
+<ul class="simple">
+<li><p>better understand the data</p></li>
+<li><p>build an intuition about the data</p></li>
+<li><p>generate hypotheses</p></li>
+<li><p>assess assumptions</p></li>
+<li><p>find insights</p></li>
+</ul>
+<p>With EDA we can</p>
+<ul class="simple">
+<li><p>get comfortable with the data</p></li>
+<li><p>find magic features</p></li>
+<li><p>find mistakes or odd values</p></li>
+</ul>
+<div class="section" id="building-intuition-about-the-data">
+<h4>Building intuition about the data<a class="headerlink" href="#building-intuition-about-the-data" title="Permalink to this headline">¶</a></h4>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/02/intuitive.png" style="width:80%" /><ul class="simple">
+<li><p>Is <em>336</em> a Typo?</p></li>
+<li><p>Do we misinterpret the feature (<em>age in years</em>)?</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="introducing-pandas">
+<h2>Introducing Pandas<a class="headerlink" href="#introducing-pandas" title="Permalink to this headline">¶</a></h2>
+<p>The <em>pandas</em> package is the most important tool at the disposal of Data Scientists and Analysts working in Python today. The powerful machine learning and glamorous visualization tools may get all the attention, but pandas is the backbone of most data projects.</p>
+<blockquote>
+<div><p>[<em>pandas</em>] is derived from the term “<strong>pan</strong>el <strong>da</strong>ta”, an econometrics term for data sets that include observations over multiple time periods for the same individuals. — <a class="reference external" href="https://en.wikipedia.org/wiki/Pandas_%28software%29">Wikipedia</a></p>
+</div></blockquote>
+<p>We will cover the essential bits of information about pandas, including how to install it, its uses, and how it works with other common Python data analysis packages such as <strong>matplotlib</strong>.</p>
+<div class="section" id="typical-use-cases">
+<h3>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Permalink to this headline">¶</a></h3>
+<p>Pandas has so many uses that it might make sense to list the things it can’t do instead of what it can do.</p>
+<p>For example, say you want to explore a dataset stored in a CSV on your computer. Pandas will extract the data from that CSV into a DataFrame — a table, basically — then let you do things like:</p>
+<ul class="simple">
+<li><p>Calculate statistics and answer questions about the data, like</p>
+<ul>
+<li><p>What’s the average, median, max, or min of each column?</p></li>
+<li><p>Does column A correlate with column B?</p></li>
+<li><p>What does the distribution of data in column C look like?</p></li>
+</ul>
+</li>
+<li><p>Clean the data by doing things like removing missing values and filtering rows or columns by some criteria</p></li>
+<li><p>Visualize the data with help from Matplotlib. Plot bars, lines, histograms, bubbles, and more.</p></li>
+<li><p>Store the cleaned, transformed data back into a CSV, other file or database</p></li>
+</ul>
+<p>Before you jump into predictive or prescriptive modeling you need to have a good understanding of the nature of your dataset and pandas is a great avenue through which to do that.</p>
+</div>
+<div class="section" id="pandas-within-the-data-science-toolkit">
+<h3>Pandas within the data science toolkit<a class="headerlink" href="#pandas-within-the-data-science-toolkit" title="Permalink to this headline">¶</a></h3>
+<p>Not only is the pandas library a central component of the data science toolkit but it is used in conjunction with other libraries in that collection.</p>
+<p>Pandas is built on top of the <strong>NumPy</strong> package, meaning a lot of the structure of NumPy is used or replicated in Pandas. Data in pandas is often used to feed statistical analysis in <strong>SciPy</strong>, plotting functions from <strong>Matplotlib</strong>, and machine learning algorithms in <strong>Scikit-learn</strong>.</p>
+<p>Jupyter Notebooks offer a good environment for using pandas to do data exploration and modeling, but pandas can also be used in text editors just as easily.</p>
+<p>Jupyter Notebooks give us the ability to execute code in a particular cell as opposed to running the entire file. This saves a lot of time when working with large datasets and complex transformations. Notebooks also provide an easy way to visualize pandas’ DataFrames and plots.</p>
+</div>
+<div class="section" id="installation-and-import">
+<h3>Installation and Import<a class="headerlink" href="#installation-and-import" title="Permalink to this headline">¶</a></h3>
+<p>Pandas is an easy package to install. Open up your terminal program (for Mac users) or command line (for PC users) and install it using either of the following commands:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pandas</span></code></p>
+<p>OR</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code></p>
+<p>Google Colab has pandas pre-installed.</p>
+<p>To import pandas we usually import it with a shorter name since it’s used so much:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="series-and-dataframes">
+<h2>Series and DataFrames<a class="headerlink" href="#series-and-dataframes" title="Permalink to this headline">¶</a></h2>
+<p>The primary two components of pandas are the <code class="docutils literal notranslate"><span class="pre">Series</span></code> and <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Series</span></code> is essentially a column vector, and a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a multi-dimensional table made up of a collection of Series.</p>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/02/series-and-dataframe.png" style="width:60%" />
+<p>DataFrames and Series are quite similar in that many operations that you can do with one you can do with the other, such as filling in null values and calculating the mean.</p>
+<div class="section" id="creating-dataframes-from-scratch">
+<h3>Creating DataFrames from scratch<a class="headerlink" href="#creating-dataframes-from-scratch" title="Permalink to this headline">¶</a></h3>
+<p>Creating DataFrames right in Python is good to know and quite useful when testing new methods and functions you find in the pandas docs. There are <em>many</em> ways to create a DataFrame from scratch, but a great option is to just use a simple <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
+<p>Let’s say we are working on a fulfillment project. We want to have a row for each customer and one colum for order and delivery amount each. To organize this as a dictionary for pandas we could do something like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ordered&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+    <span class="s1">&#39;delivered&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">purchases</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">purchases</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ordered</th>
+      <th>delivered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="indexing-dataframes">
+<h3>Indexing DataFrames<a class="headerlink" href="#indexing-dataframes" title="Permalink to this headline">¶</a></h3>
+<p>Each <em>(key, value)</em> item in <code class="docutils literal notranslate"><span class="pre">data</span></code> corresponds to a <em>column</em> in the resulting DataFrame. The <strong>Index</strong> of this DataFrame was given to us on creation as the numbers 0-3, but we could also create our own when we initialize the DataFrame.</p>
+<p>Let’s have customer names as our index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">purchases</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;June&#39;</span><span class="p">,</span> <span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="s1">&#39;Lily&#39;</span><span class="p">,</span> <span class="s1">&#39;David&#39;</span><span class="p">])</span>
+<span class="n">purchases</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ordered</th>
+      <th>delivered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>June</th>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Robert</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Lily</th>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>David</th>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>So now we could <strong>loc</strong>ate a customer’s order status by using their name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">purchases</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;June&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ordered      3
+delivered    0
+Name: June, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-and-writing-csvs">
+<h3>Reading and writing CSVs<a class="headerlink" href="#reading-and-writing-csvs" title="Permalink to this headline">¶</a></h3>
+<p>It’s quite simple to load data from various file formats into a DataFrame. With CSV files all you need is a single line to load in the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/NikoStein/pds_data/main/data/purchases.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>customer</th>
+      <th>ordered</th>
+      <th>delivered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>June</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Robert</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lily</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>After extensive data preparation you likely want to save it as a file of your choice. Similar to the ways we read in data, pandas provides intuitive commands to save it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;new_purchases.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-dataframe-operations-viewing">
+<h2>Basic DataFrame operations: Viewing<a class="headerlink" href="#basic-dataframe-operations-viewing" title="Permalink to this headline">¶</a></h2>
+<p>DataFrames possess hundreds of methods and other operations that are crucial to any analysis. As a beginner, you should know the operations that perform simple transformations of your data and those that provide fundamental statistical analysis.</p>
+<p>Let’s load in the IMDB movies dataset to begin. We’re loading this dataset from a CSV and designating the movie titles to be our index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NikoStein/pds_data/main/data/IMDB-Movie-Data.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Title&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="viewing-your-data">
+<h3>Viewing your data<a class="headerlink" href="#viewing-your-data" title="Permalink to this headline">¶</a></h3>
+<p>The first thing to do when opening a new dataset is print out a few rows to keep as a visual reference.</p>
+<p>Typically when we load in a dataset, we like to view the first five or so rows to see what’s under the hood. Here we can see the names of each column, the index, and examples of values in each row.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.head()</span></code> outputs the <strong>first</strong> five rows of your DataFrame by default, but we could also pass a number as well: <code class="docutils literal notranslate"><span class="pre">movies_df.head(10)</span></code> would output the top ten rows, for example. To see the <strong>last</strong> five rows use <code class="docutils literal notranslate"><span class="pre">.tail()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rank</th>
+      <th>Genre</th>
+      <th>Description</th>
+      <th>Director</th>
+      <th>Actors</th>
+      <th>Year</th>
+      <th>Runtime (Minutes)</th>
+      <th>Rating</th>
+      <th>Votes</th>
+      <th>Revenue (Millions)</th>
+      <th>Metascore</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>1</td>
+      <td>Action,Adventure,Sci-Fi</td>
+      <td>A group of intergalactic criminals are forced ...</td>
+      <td>James Gunn</td>
+      <td>Chris Pratt, Vin Diesel, Bradley Cooper, Zoe S...</td>
+      <td>2014</td>
+      <td>121</td>
+      <td>8.1</td>
+      <td>757074</td>
+      <td>333.13</td>
+      <td>76.0</td>
+    </tr>
+    <tr>
+      <th>Prometheus</th>
+      <td>2</td>
+      <td>Adventure,Mystery,Sci-Fi</td>
+      <td>Following clues to the origin of mankind, a te...</td>
+      <td>Ridley Scott</td>
+      <td>Noomi Rapace, Logan Marshall-Green, Michael Fa...</td>
+      <td>2012</td>
+      <td>124</td>
+      <td>7.0</td>
+      <td>485820</td>
+      <td>126.46</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>Split</th>
+      <td>3</td>
+      <td>Horror,Thriller</td>
+      <td>Three girls are kidnapped by a man with a diag...</td>
+      <td>M. Night Shyamalan</td>
+      <td>James McAvoy, Anya Taylor-Joy, Haley Lu Richar...</td>
+      <td>2016</td>
+      <td>117</td>
+      <td>7.3</td>
+      <td>157606</td>
+      <td>138.12</td>
+      <td>62.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="getting-info-about-your-data-info">
+<h3>Getting info about your data <code class="docutils literal notranslate"><span class="pre">.info()</span></code><a class="headerlink" href="#getting-info-about-your-data-info" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.info()</span></code> should be one of the very first commands you run after loading your data. <code class="docutils literal notranslate"><span class="pre">.info()</span></code> provides the essential details about your dataset, such as the number of rows and columns, the number of non-null values, what type of data is in each column, and how much memory your DataFrame is using.</p>
+<p>Notice in our movies dataset we have some obvious missing values in the <code class="docutils literal notranslate"><span class="pre">Revenue</span></code> and <code class="docutils literal notranslate"><span class="pre">Metascore</span></code> columns. We’ll look at how to handle those in a bit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 1000 entries, Guardians of the Galaxy to Nine Lives
+Data columns (total 11 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   Rank                1000 non-null   int64  
+ 1   Genre               1000 non-null   object 
+ 2   Description         1000 non-null   object 
+ 3   Director            1000 non-null   object 
+ 4   Actors              1000 non-null   object 
+ 5   Year                1000 non-null   int64  
+ 6   Runtime (Minutes)   1000 non-null   int64  
+ 7   Rating              1000 non-null   float64
+ 8   Votes               1000 non-null   int64  
+ 9   Revenue (Millions)  872 non-null    float64
+ 10  Metascore           936 non-null    float64
+dtypes: float64(3), int64(4), object(4)
+memory usage: 93.8+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-info-about-your-data-shape">
+<h3>Getting info about your data: <code class="docutils literal notranslate"><span class="pre">.shape</span></code><a class="headerlink" href="#getting-info-about-your-data-shape" title="Permalink to this headline">¶</a></h3>
+<p>Another fast and useful attribute is <code class="docutils literal notranslate"><span class="pre">.shape</span></code>, which outputs just a tuple of (rows, columns).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">.shape</span></code> has no parentheses and is a simple tuple of format (rows, columns). So we have <strong>1000 rows</strong> and <strong>11 columns</strong> in our movies DataFrame.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.shape</span></code> command is used a lot when cleaning and transforming data. For example, you might filter some rows based on some criteria and then want to know quickly how many rows were removed.</p>
+</div>
+<div class="section" id="describing-your-variables">
+<h3>Describing your variables<a class="headerlink" href="#describing-your-variables" title="Permalink to this headline">¶</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">describe()</span></code> on an entire DataFrame we can get a summary of the distribution of continuous variables. Understanding which numbers are continuous also comes in handy when thinking about the type of plot to use to represent your data visually.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rank</th>
+      <th>Year</th>
+      <th>Runtime (Minutes)</th>
+      <th>Rating</th>
+      <th>Votes</th>
+      <th>Revenue (Millions)</th>
+      <th>Metascore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1000.000000</td>
+      <td>1000.000000</td>
+      <td>1000.000000</td>
+      <td>1000.000000</td>
+      <td>1.000000e+03</td>
+      <td>872.000000</td>
+      <td>936.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>500.500000</td>
+      <td>2012.783000</td>
+      <td>113.172000</td>
+      <td>6.723200</td>
+      <td>1.698083e+05</td>
+      <td>82.956376</td>
+      <td>58.985043</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>288.819436</td>
+      <td>3.205962</td>
+      <td>18.810908</td>
+      <td>0.945429</td>
+      <td>1.887626e+05</td>
+      <td>103.253540</td>
+      <td>17.194757</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>2006.000000</td>
+      <td>66.000000</td>
+      <td>1.900000</td>
+      <td>6.100000e+01</td>
+      <td>0.000000</td>
+      <td>11.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>250.750000</td>
+      <td>2010.000000</td>
+      <td>100.000000</td>
+      <td>6.200000</td>
+      <td>3.630900e+04</td>
+      <td>13.270000</td>
+      <td>47.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>500.500000</td>
+      <td>2014.000000</td>
+      <td>111.000000</td>
+      <td>6.800000</td>
+      <td>1.107990e+05</td>
+      <td>47.985000</td>
+      <td>59.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>750.250000</td>
+      <td>2016.000000</td>
+      <td>123.000000</td>
+      <td>7.400000</td>
+      <td>2.399098e+05</td>
+      <td>113.715000</td>
+      <td>72.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1000.000000</td>
+      <td>2016.000000</td>
+      <td>191.000000</td>
+      <td>9.000000</td>
+      <td>1.791916e+06</td>
+      <td>936.630000</td>
+      <td>100.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="describing-categorical-variables">
+<h3>Describing Categorical Variables<a class="headerlink" href="#describing-categorical-variables" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.describe()</span></code> can also be used on a categorical variable to get the count of rows, unique count of categories, top category, and freq of top category:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count                        1000
+unique                        207
+top       Action,Adventure,Sci-Fi
+freq                           50
+Name: Genre, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> can tell us the frequency of all values in a column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Action,Adventure,Sci-Fi       50
+Drama                         48
+Comedy,Drama,Romance          35
+Comedy                        32
+Drama,Romance                 31
+Comedy,Drama                  27
+Action,Adventure,Fantasy      27
+Animation,Adventure,Comedy    27
+Comedy,Romance                26
+Crime,Drama,Thriller          24
+Name: Genre, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="relationships-between-continuous-variables">
+<h3>Relationships between continuous variables<a class="headerlink" href="#relationships-between-continuous-variables" title="Permalink to this headline">¶</a></h3>
+<p>Examining bivariate relationships comes in handy when you have an outcome or dependent variable in mind and would like to see the features most correlated to the increase or decrease of the outcome. You can visually represent bivariate relationships with scatterplots (seen below in the plotting section).</p>
+<p>By using the correlation method <code class="docutils literal notranslate"><span class="pre">.corr()</span></code> we can generate the relationship between each continuous variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rank</th>
+      <th>Year</th>
+      <th>Runtime (Minutes)</th>
+      <th>Rating</th>
+      <th>Votes</th>
+      <th>Revenue (Millions)</th>
+      <th>Metascore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rank</th>
+      <td>1.000000</td>
+      <td>-0.261605</td>
+      <td>-0.221739</td>
+      <td>-0.219555</td>
+      <td>-0.283876</td>
+      <td>-0.271592</td>
+      <td>-0.191869</td>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <td>-0.261605</td>
+      <td>1.000000</td>
+      <td>-0.164900</td>
+      <td>-0.211219</td>
+      <td>-0.411904</td>
+      <td>-0.126790</td>
+      <td>-0.079305</td>
+    </tr>
+    <tr>
+      <th>Runtime (Minutes)</th>
+      <td>-0.221739</td>
+      <td>-0.164900</td>
+      <td>1.000000</td>
+      <td>0.392214</td>
+      <td>0.407062</td>
+      <td>0.267953</td>
+      <td>0.211978</td>
+    </tr>
+    <tr>
+      <th>Rating</th>
+      <td>-0.219555</td>
+      <td>-0.211219</td>
+      <td>0.392214</td>
+      <td>1.000000</td>
+      <td>0.511537</td>
+      <td>0.217654</td>
+      <td>0.631897</td>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <td>-0.283876</td>
+      <td>-0.411904</td>
+      <td>0.407062</td>
+      <td>0.511537</td>
+      <td>1.000000</td>
+      <td>0.639661</td>
+      <td>0.325684</td>
+    </tr>
+    <tr>
+      <th>Revenue (Millions)</th>
+      <td>-0.271592</td>
+      <td>-0.126790</td>
+      <td>0.267953</td>
+      <td>0.217654</td>
+      <td>0.639661</td>
+      <td>1.000000</td>
+      <td>0.142397</td>
+    </tr>
+    <tr>
+      <th>Metascore</th>
+      <td>-0.191869</td>
+      <td>-0.079305</td>
+      <td>0.211978</td>
+      <td>0.631897</td>
+      <td>0.325684</td>
+      <td>0.142397</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-dataframe-operations-data-cleaning">
+<h2>Basic DataFrame operations: Data Cleaning<a class="headerlink" href="#basic-dataframe-operations-data-cleaning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="handling-duplicates-1">
+<h3>Handling duplicates (1)<a class="headerlink" href="#handling-duplicates-1" title="Permalink to this headline">¶</a></h3>
+<p>Duplicate management is key in most settings involving real data. It is a central data intgegration challenge and we want to be able to perform some basic activities using pandas. This dataset does not have duplicate rows, but it is always important to verify you aren’t aggregating duplicate rows.</p>
+<p>To demonstrate, let’s simply just double up our movies DataFrame by appending it to itself. Using <code class="docutils literal notranslate"><span class="pre">append()</span></code> will return a copy without affecting the original DataFrame. We are capturing this copy in <code class="docutils literal notranslate"><span class="pre">temp</span></code> so we aren’t working with the real data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_df</span> <span class="o">=</span> <span class="n">movies_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movies_df</span><span class="p">)</span>
+<span class="n">temp_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2000, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can try dropping duplicates. Just like <code class="docutils literal notranslate"><span class="pre">append()</span></code>, the <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> method will also return a copy of your DataFrame, but this time with duplicates removed. Calling <code class="docutils literal notranslate"><span class="pre">.shape</span></code> confirms we’re back to the 1000 rows of our original dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_df</span> <span class="o">=</span> <span class="n">temp_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">temp_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 11)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="handling-duplicates-2">
+<h3>Handling duplicates (2)<a class="headerlink" href="#handling-duplicates-2" title="Permalink to this headline">¶</a></h3>
+<p>Another important argument for <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> is <code class="docutils literal notranslate"><span class="pre">keep</span></code>, which has three possible options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">first</span></code>: (default) Drop duplicates except for the first occurrence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last</span></code>: Drop duplicates except for the last occurrence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: Drop all duplicates.</p></li>
+</ul>
+<p>Since we didn’t define the <code class="docutils literal notranslate"><span class="pre">keep</span></code> arugment in the previous example it was defaulted to <code class="docutils literal notranslate"><span class="pre">first</span></code>. This means that if two rows are the same pandas will drop the second row and keep the first row. Watch what happens to <code class="docutils literal notranslate"><span class="pre">temp_df</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_df</span> <span class="o">=</span> <span class="n">movies_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movies_df</span><span class="p">)</span>  <span class="c1"># make a new copy</span>
+<span class="n">temp_df</span> <span class="o">=</span> <span class="n">temp_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">temp_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since all rows were duplicates, <code class="docutils literal notranslate"><span class="pre">keep=False</span></code> dropped them all resulting in zero rows being left over. If you’re wondering why you would want to do this, one reason is that it allows you to locate all duplicates in your dataset. When conditional selections are shown below you’ll see how to do that.</p>
+</div>
+<div class="section" id="inplace-operations">
+<h3>Inplace Operations<a class="headerlink" href="#inplace-operations" title="Permalink to this headline">¶</a></h3>
+<p>It’s a little verbose to keep assigning DataFrames to the same variable like in this example. For this reason, pandas has the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> keyword argument on many of its methods. Using <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> will modify the DataFrame object in place:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_df</span> <span class="o">=</span> <span class="n">movies_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movies_df</span><span class="p">)</span>  <span class="c1"># make a new copy</span>
+
+<span class="n">temp_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">temp_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 11)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="column-cleanup">
+<h3>Column cleanup<a class="headerlink" href="#column-cleanup" title="Permalink to this headline">¶</a></h3>
+<p>Many times datasets will have verbose column names with symbols, upper and lowercase words, spaces, and typos. To make selecting data by column name easier we can spend a little time cleaning up their names. Here’s how to print the column names of our dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Rank&#39;, &#39;Genre&#39;, &#39;Description&#39;, &#39;Director&#39;, &#39;Actors&#39;, &#39;Year&#39;,
+       &#39;Runtime (Minutes)&#39;, &#39;Rating&#39;, &#39;Votes&#39;, &#39;Revenue (Millions)&#39;,
+       &#39;Metascore&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Not only does <code class="docutils literal notranslate"><span class="pre">.columns</span></code> come in handy if you want to rename columns by allowing for simple copy and paste, it’s also useful if you need to understand why you are receiving a <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Error</span></code> when selecting data by column.</p>
+</div>
+<div class="section" id="renaming-columns">
+<h3>Renaming Columns<a class="headerlink" href="#renaming-columns" title="Permalink to this headline">¶</a></h3>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> method to rename certain or all columns via a <code class="docutils literal notranslate"><span class="pre">dict</span></code>. We don’t want parentheses, so let’s rename those:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;Runtime (Minutes)&#39;</span><span class="p">:</span> <span class="s1">&#39;Runtime&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Revenue (Millions)&#39;</span><span class="p">:</span> <span class="s1">&#39;Revenue_millions&#39;</span>
+    <span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">movies_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Rank&#39;, &#39;Genre&#39;, &#39;Description&#39;, &#39;Director&#39;, &#39;Actors&#39;, &#39;Year&#39;, &#39;Runtime&#39;,
+       &#39;Rating&#39;, &#39;Votes&#39;, &#39;Revenue_millions&#39;, &#39;Metascore&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Excellent. But what if we want to lowercase all names? Instead of using <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> we could also set a list of names to the columns like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">,</span> <span class="s1">&#39;genre&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;director&#39;</span><span class="p">,</span> <span class="s1">&#39;actors&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;runtime&#39;</span><span class="p">,</span> 
+                     <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;votes&#39;</span><span class="p">,</span> <span class="s1">&#39;revenue_millions&#39;</span><span class="p">,</span> <span class="s1">&#39;metascore&#39;</span><span class="p">]</span>
+<span class="n">movies_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;rank&#39;, &#39;genre&#39;, &#39;description&#39;, &#39;director&#39;, &#39;actors&#39;, &#39;year&#39;, &#39;runtime&#39;,
+       &#39;rating&#39;, &#39;votes&#39;, &#39;revenue_millions&#39;, &#39;metascore&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="operating-on-many-columns">
+<h3>Operating on many columns<a class="headerlink" href="#operating-on-many-columns" title="Permalink to this headline">¶</a></h3>
+<p>With thousands of columns the previous approach is too much work. Instead of just renaming each column manually we can do a list comprehension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">movies_df</span><span class="p">]</span>
+
+<span class="n">movies_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;rank&#39;, &#39;genre&#39;, &#39;description&#39;, &#39;director&#39;, &#39;actors&#39;, &#39;year&#39;, &#39;runtime&#39;,
+       &#39;rating&#39;, &#39;votes&#39;, &#39;revenue_millions&#39;, &#39;metascore&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">list</span></code> (and <code class="docutils literal notranslate"><span class="pre">dict</span></code>) comprehensions come in handy a lot when working with pandas and data in general.</p>
+<p>It’s a good idea to lowercase, remove special characters, and replace spaces with underscores if you’ll be working with a dataset for some time.</p>
+</div>
+<div class="section" id="working-with-missing-values">
+<h3>Working with missing values<a class="headerlink" href="#working-with-missing-values" title="Permalink to this headline">¶</a></h3>
+<p>When exploring data, you’ll most likely encounter missing or null values, which are essentially placeholders for non-existent values. Most commonly you’ll see Python’s <code class="docutils literal notranslate"><span class="pre">None</span></code> or NumPy’s <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, each of which are handled differently in some situations.</p>
+<p>There are two options in dealing with nulls:</p>
+<ol class="simple">
+<li><p>Get rid of rows or columns with nulls</p></li>
+<li><p>Replace nulls with non-null values, a technique known as <strong>imputation</strong></p></li>
+</ol>
+<p>Let’s calculate to total number of nulls in each column of our dataset. The first step is to check which cells in our DataFrame are null:</p>
+</div>
+<div class="section" id="identify-missing-values">
+<h3>Identify missing values<a class="headerlink" href="#identify-missing-values" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">isnull()</span></code> returns a DataFrame where each cell is either True or False depending on that cell’s null status.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>genre</th>
+      <th>description</th>
+      <th>director</th>
+      <th>actors</th>
+      <th>year</th>
+      <th>runtime</th>
+      <th>rating</th>
+      <th>votes</th>
+      <th>revenue_millions</th>
+      <th>metascore</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>Prometheus</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>Split</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>Sing</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>Suicide Squad</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.isnull()</span></code> just by iteself isn’t very useful, and is usually used in conjunction with other methods, like <code class="docutils literal notranslate"><span class="pre">sum()</span></code>. To count the number of nulls in each column we use an aggregate function for summing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank                  0
+genre                 0
+description           0
+director              0
+actors                0
+year                  0
+runtime               0
+rating                0
+votes                 0
+revenue_millions    128
+metascore            64
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="removing-null-values">
+<h3>Removing null values<a class="headerlink" href="#removing-null-values" title="Permalink to this headline">¶</a></h3>
+<p>Data Scientists and Analysts regularly face the dilemma of dropping or imputing null values, and is a decision that requires intimate knowledge of your data and its context. Overall, removing null data is only suggested if you have a small amount of missing data.</p>
+<p>Remove nulls is pretty simple:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">movies_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(838, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This operation deletes any <strong>row</strong> with at least a single null value. In our case, it removes 128 rows where <code class="docutils literal notranslate"><span class="pre">revenue_millions</span></code> is null and 64 rows where <code class="docutils literal notranslate"><span class="pre">metascore</span></code> is null. This obviously seems like a waste since there’s perfectly good data in the other columns of those dropped rows. That’s why we’ll look at imputation next.</p>
+</div>
+<div class="section" id="imputation">
+<h3>Imputation<a class="headerlink" href="#imputation" title="Permalink to this headline">¶</a></h3>
+<p>Imputation is a conventional feature engineering technique used to keep valuable data that have null values. There may be instances where dropping every row with a null value removes too big a chunk from your dataset, so instead we can impute that null with another value, usually the <strong>mean</strong> or the <strong>median</strong> of that column.</p>
+<p>Let’s look at imputing the missing values in the <code class="docutils literal notranslate"><span class="pre">revenue_millions</span></code> column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">revenue</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using square brackets is the general way we select columns in a DataFrame. <code class="docutils literal notranslate"><span class="pre">revenue</span></code> is a Series and we can calculate its mean and fill the nulls using <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">revenue_mean</span> <span class="o">=</span> <span class="n">revenue</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">revenue_mean</span><span class="p">)</span>
+<span class="n">revenue</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">revenue_mean</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>82.95637614678898
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have now replaced all nulls in <code class="docutils literal notranslate"><span class="pre">revenue</span></code> with the mean of the column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank                 0
+genre                0
+description          0
+director             0
+actors               0
+year                 0
+runtime              0
+rating               0
+votes                0
+revenue_millions     0
+metascore           64
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Imputing an entire column with the same value like this is a basic example. It would be a better idea to try a more granular imputation by Genre or Director. For example, you would find the mean of the revenue generated in each genre individually and impute the nulls in each genre with that genre’s mean.</p>
+</div>
+</div>
+<div class="section" id="basic-dataframe-operations-slicing-selecting-extracting">
+<h2>Basic DataFrame operations: Slicing, selecting, extracting<a class="headerlink" href="#basic-dataframe-operations-slicing-selecting-extracting" title="Permalink to this headline">¶</a></h2>
+<p>Up until now we’ve focused on some basic summaries of our data. We’ve learned about simple column extraction using single brackets, and we imputed null values in a column using <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>. Below are the other methods of slicing, selecting, and extracting you’ll need to use constantly.</p>
+<p>It’s important to note that, although many methods are the same, DataFrames and Series have different attributes, so you’ll need be sure to know which type you are working with or else you will receive attribute errors.</p>
+<p>Let’s look at working with columns first.</p>
+<div class="section" id="by-column">
+<h3>By column<a class="headerlink" href="#by-column" title="Permalink to this headline">¶</a></h3>
+<p>You already saw how to extract a column using square brackets like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genre_col</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">genre_col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will return a <em>Series</em>. To extract a column as a <em>DataFrame</em>, you need to pass a list of column names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genre_col</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[[</span><span class="s1">&#39;genre&#39;</span><span class="p">]]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">genre_col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since it’s just a list, adding another column name is easy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[[</span><span class="s1">&#39;genre&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">]]</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>genre</th>
+      <th>rating</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>Action,Adventure,Sci-Fi</td>
+      <td>8.1</td>
+    </tr>
+    <tr>
+      <th>Prometheus</th>
+      <td>Adventure,Mystery,Sci-Fi</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Split</th>
+      <td>Horror,Thriller</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>Sing</th>
+      <td>Animation,Comedy,Family</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>Suicide Squad</th>
+      <td>Action,Adventure,Fantasy</td>
+      <td>6.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="by-row">
+<h3>By row<a class="headerlink" href="#by-row" title="Permalink to this headline">¶</a></h3>
+<p>For rows, we have two options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.loc</span></code> - <strong>loc</strong>ates by name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code>- <strong>loc</strong>ates by numerical <strong>i</strong>ndex</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prom</span> <span class="o">=</span> <span class="n">movies_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Prometheus&quot;</span><span class="p">]</span>
+<span class="n">prom</span><span class="p">[{</span><span class="s2">&quot;description&quot;</span><span class="p">,</span><span class="s2">&quot;director&quot;</span><span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>director                                            Ridley Scott
+description    Following clues to the origin of mankind, a te...
+Name: Prometheus, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">iloc</span></code> we give it the numerical index of Prometheus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prom</span> <span class="o">=</span> <span class="n">movies_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">prom</span><span class="p">[{</span><span class="s2">&quot;description&quot;</span><span class="p">,</span><span class="s2">&quot;director&quot;</span><span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>director                                            Ridley Scott
+description    Following clues to the origin of mankind, a te...
+Name: Prometheus, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conditional-selections">
+<h3>Conditional selections<a class="headerlink" href="#conditional-selections" title="Permalink to this headline">¶</a></h3>
+<p>We’ve gone over how to select columns and rows, but what if we want to make a conditional selection?</p>
+<p>For example, what if we want to filter our movies DataFrame to show only films directed by Ridley Scott or films with a rating greater than or equal to 8.0?</p>
+<p>To do that, we take a column from the DataFrame and apply a Boolean condition to it. Here’s an example of a Boolean condition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;director&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Ridley Scott&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>genre</th>
+      <th>description</th>
+      <th>director</th>
+      <th>actors</th>
+      <th>year</th>
+      <th>runtime</th>
+      <th>rating</th>
+      <th>votes</th>
+      <th>revenue_millions</th>
+      <th>metascore</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Prometheus</th>
+      <td>2</td>
+      <td>Adventure,Mystery,Sci-Fi</td>
+      <td>Following clues to the origin of mankind, a te...</td>
+      <td>Ridley Scott</td>
+      <td>Noomi Rapace, Logan Marshall-Green, Michael Fa...</td>
+      <td>2012</td>
+      <td>124</td>
+      <td>7.0</td>
+      <td>485820</td>
+      <td>126.46</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>The Martian</th>
+      <td>103</td>
+      <td>Adventure,Drama,Sci-Fi</td>
+      <td>An astronaut becomes stranded on Mars after hi...</td>
+      <td>Ridley Scott</td>
+      <td>Matt Damon, Jessica Chastain, Kristen Wiig, Ka...</td>
+      <td>2015</td>
+      <td>144</td>
+      <td>8.0</td>
+      <td>556097</td>
+      <td>228.43</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>Robin Hood</th>
+      <td>388</td>
+      <td>Action,Adventure,Drama</td>
+      <td>In 12th century England, Robin and his band of...</td>
+      <td>Ridley Scott</td>
+      <td>Russell Crowe, Cate Blanchett, Matthew Macfady...</td>
+      <td>2010</td>
+      <td>140</td>
+      <td>6.7</td>
+      <td>221117</td>
+      <td>105.22</td>
+      <td>53.0</td>
+    </tr>
+    <tr>
+      <th>American Gangster</th>
+      <td>471</td>
+      <td>Biography,Crime,Drama</td>
+      <td>In 1970s America, a detective works to bring d...</td>
+      <td>Ridley Scott</td>
+      <td>Denzel Washington, Russell Crowe, Chiwetel Eji...</td>
+      <td>2007</td>
+      <td>157</td>
+      <td>7.8</td>
+      <td>337835</td>
+      <td>130.13</td>
+      <td>76.0</td>
+    </tr>
+    <tr>
+      <th>Exodus: Gods and Kings</th>
+      <td>517</td>
+      <td>Action,Adventure,Drama</td>
+      <td>The defiant leader Moses rises up against the ...</td>
+      <td>Ridley Scott</td>
+      <td>Christian Bale, Joel Edgerton, Ben Kingsley, S...</td>
+      <td>2014</td>
+      <td>150</td>
+      <td>6.0</td>
+      <td>137299</td>
+      <td>65.01</td>
+      <td>52.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="combining-conditions">
+<h3>Combining conditions<a class="headerlink" href="#combining-conditions" title="Permalink to this headline">¶</a></h3>
+<p>We can make some richer conditionals by using logical operators <code class="docutils literal notranslate"><span class="pre">|</span></code> for “or” and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> for “and”.</p>
+<p>Let’s filter the the DataFrame to show only movies by Christopher Nolan OR Ridley Scott:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[(</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;director&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Christopher Nolan&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;director&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Ridley Scott&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>genre</th>
+      <th>description</th>
+      <th>director</th>
+      <th>actors</th>
+      <th>year</th>
+      <th>runtime</th>
+      <th>rating</th>
+      <th>votes</th>
+      <th>revenue_millions</th>
+      <th>metascore</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Prometheus</th>
+      <td>2</td>
+      <td>Adventure,Mystery,Sci-Fi</td>
+      <td>Following clues to the origin of mankind, a te...</td>
+      <td>Ridley Scott</td>
+      <td>Noomi Rapace, Logan Marshall-Green, Michael Fa...</td>
+      <td>2012</td>
+      <td>124</td>
+      <td>7.0</td>
+      <td>485820</td>
+      <td>126.46</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>Interstellar</th>
+      <td>37</td>
+      <td>Adventure,Drama,Sci-Fi</td>
+      <td>A team of explorers travel through a wormhole ...</td>
+      <td>Christopher Nolan</td>
+      <td>Matthew McConaughey, Anne Hathaway, Jessica Ch...</td>
+      <td>2014</td>
+      <td>169</td>
+      <td>8.6</td>
+      <td>1047747</td>
+      <td>187.99</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight</th>
+      <td>55</td>
+      <td>Action,Crime,Drama</td>
+      <td>When the menace known as the Joker wreaks havo...</td>
+      <td>Christopher Nolan</td>
+      <td>Christian Bale, Heath Ledger, Aaron Eckhart,Mi...</td>
+      <td>2008</td>
+      <td>152</td>
+      <td>9.0</td>
+      <td>1791916</td>
+      <td>533.32</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>The Prestige</th>
+      <td>65</td>
+      <td>Drama,Mystery,Sci-Fi</td>
+      <td>Two stage magicians engage in competitive one-...</td>
+      <td>Christopher Nolan</td>
+      <td>Christian Bale, Hugh Jackman, Scarlett Johanss...</td>
+      <td>2006</td>
+      <td>130</td>
+      <td>8.5</td>
+      <td>913152</td>
+      <td>53.08</td>
+      <td>66.0</td>
+    </tr>
+    <tr>
+      <th>Inception</th>
+      <td>81</td>
+      <td>Action,Adventure,Sci-Fi</td>
+      <td>A thief, who steals corporate secrets through ...</td>
+      <td>Christopher Nolan</td>
+      <td>Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen...</td>
+      <td>2010</td>
+      <td>148</td>
+      <td>8.8</td>
+      <td>1583625</td>
+      <td>292.57</td>
+      <td>74.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="combining-conditions-2">
+<h3>Combining conditions (2)<a class="headerlink" href="#combining-conditions-2" title="Permalink to this headline">¶</a></h3>
+<p>We need to make sure to group evaluations with parentheses so Python knows how to evaluate the conditional.</p>
+<p><code class="docutils literal notranslate"><span class="pre">(movies_df['director']</span> <span class="pre">==</span> <span class="pre">'Christopher</span> <span class="pre">Nolan')</span> <span class="pre">|</span> <span class="pre">(movies_df['director']</span> <span class="pre">==</span> <span class="pre">'Ridley</span> <span class="pre">Scott')</span></code></p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">isin()</span></code> method we could make this more concise:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selection</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Christopher Nolan&#39;</span><span class="p">,</span> <span class="s1">&#39;Ridley Scott&#39;</span><span class="p">]</span>
+<span class="n">movies_df</span><span class="p">[</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;director&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">selection</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>genre</th>
+      <th>description</th>
+      <th>director</th>
+      <th>actors</th>
+      <th>year</th>
+      <th>runtime</th>
+      <th>rating</th>
+      <th>votes</th>
+      <th>revenue_millions</th>
+      <th>metascore</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Prometheus</th>
+      <td>2</td>
+      <td>Adventure,Mystery,Sci-Fi</td>
+      <td>Following clues to the origin of mankind, a te...</td>
+      <td>Ridley Scott</td>
+      <td>Noomi Rapace, Logan Marshall-Green, Michael Fa...</td>
+      <td>2012</td>
+      <td>124</td>
+      <td>7.0</td>
+      <td>485820</td>
+      <td>126.46</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>Interstellar</th>
+      <td>37</td>
+      <td>Adventure,Drama,Sci-Fi</td>
+      <td>A team of explorers travel through a wormhole ...</td>
+      <td>Christopher Nolan</td>
+      <td>Matthew McConaughey, Anne Hathaway, Jessica Ch...</td>
+      <td>2014</td>
+      <td>169</td>
+      <td>8.6</td>
+      <td>1047747</td>
+      <td>187.99</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight</th>
+      <td>55</td>
+      <td>Action,Crime,Drama</td>
+      <td>When the menace known as the Joker wreaks havo...</td>
+      <td>Christopher Nolan</td>
+      <td>Christian Bale, Heath Ledger, Aaron Eckhart,Mi...</td>
+      <td>2008</td>
+      <td>152</td>
+      <td>9.0</td>
+      <td>1791916</td>
+      <td>533.32</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>The Prestige</th>
+      <td>65</td>
+      <td>Drama,Mystery,Sci-Fi</td>
+      <td>Two stage magicians engage in competitive one-...</td>
+      <td>Christopher Nolan</td>
+      <td>Christian Bale, Hugh Jackman, Scarlett Johanss...</td>
+      <td>2006</td>
+      <td>130</td>
+      <td>8.5</td>
+      <td>913152</td>
+      <td>53.08</td>
+      <td>66.0</td>
+    </tr>
+    <tr>
+      <th>Inception</th>
+      <td>81</td>
+      <td>Action,Adventure,Sci-Fi</td>
+      <td>A thief, who steals corporate secrets through ...</td>
+      <td>Christopher Nolan</td>
+      <td>Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen...</td>
+      <td>2010</td>
+      <td>148</td>
+      <td>8.8</td>
+      <td>1583625</td>
+      <td>292.57</td>
+      <td>74.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="combining-conditions-3">
+<h3>Combining conditions (3)<a class="headerlink" href="#combining-conditions-3" title="Permalink to this headline">¶</a></h3>
+<p>Let’s say we want all movies that were released between 2005 and 2010, have a rating above 8.0, but made below the 25th percentile in revenue.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span>
+    <span class="p">((</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2010</span><span class="p">))</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">8.0</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>genre</th>
+      <th>description</th>
+      <th>director</th>
+      <th>actors</th>
+      <th>year</th>
+      <th>runtime</th>
+      <th>rating</th>
+      <th>votes</th>
+      <th>revenue_millions</th>
+      <th>metascore</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3 Idiots</th>
+      <td>431</td>
+      <td>Comedy,Drama</td>
+      <td>Two friends are searching for their long lost ...</td>
+      <td>Rajkumar Hirani</td>
+      <td>Aamir Khan, Madhavan, Mona Singh, Sharman Joshi</td>
+      <td>2009</td>
+      <td>170</td>
+      <td>8.4</td>
+      <td>238789</td>
+      <td>6.52</td>
+      <td>67.0</td>
+    </tr>
+    <tr>
+      <th>The Lives of Others</th>
+      <td>477</td>
+      <td>Drama,Thriller</td>
+      <td>In 1984 East Berlin, an agent of the secret po...</td>
+      <td>Florian Henckel von Donnersmarck</td>
+      <td>Ulrich Mühe, Martina Gedeck,Sebastian Koch, Ul...</td>
+      <td>2006</td>
+      <td>137</td>
+      <td>8.5</td>
+      <td>278103</td>
+      <td>11.28</td>
+      <td>89.0</td>
+    </tr>
+    <tr>
+      <th>Incendies</th>
+      <td>714</td>
+      <td>Drama,Mystery,War</td>
+      <td>Twins journey to the Middle East to discover t...</td>
+      <td>Denis Villeneuve</td>
+      <td>Lubna Azabal, Mélissa Désormeaux-Poulin, Maxim...</td>
+      <td>2010</td>
+      <td>131</td>
+      <td>8.2</td>
+      <td>92863</td>
+      <td>6.86</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>Taare Zameen Par</th>
+      <td>992</td>
+      <td>Drama,Family,Music</td>
+      <td>An eight-year-old boy is thought to be a lazy ...</td>
+      <td>Aamir Khan</td>
+      <td>Darsheel Safary, Aamir Khan, Tanay Chheda, Sac...</td>
+      <td>2007</td>
+      <td>165</td>
+      <td>8.5</td>
+      <td>102697</td>
+      <td>1.20</td>
+      <td>42.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="aggregation-and-grouping">
+<h2>Aggregation and Grouping<a class="headerlink" href="#aggregation-and-grouping" title="Permalink to this headline">¶</a></h2>
+<p>An essential piece of analysis of large data is efficient summarization: computing aggregations like <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">median()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code>, and <code class="docutils literal notranslate"><span class="pre">max()</span></code>, in which a single number gives insight into the nature of a potentially large dataset.
+In this section, we’ll explore aggregations in Pandas, from simple operations akin to what we’ve seen on NumPy arrays, to more sophisticated operations based on the concept of a <code class="docutils literal notranslate"><span class="pre">groupby</span></code>.</p>
+<p>The following table summarizes some other built-in Pandas aggregations:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aggregation</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">count()</span></code></p></td>
+<td><p>Total number of items</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">first()</span></code>, <code class="docutils literal notranslate"><span class="pre">last()</span></code></p></td>
+<td><p>First and last item</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">median()</span></code></p></td>
+<td><p>Mean and median</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">min()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code></p></td>
+<td><p>Minimum and maximum</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">std()</span></code>, <code class="docutils literal notranslate"><span class="pre">var()</span></code></p></td>
+<td><p>Standard deviation and variance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mad()</span></code></p></td>
+<td><p>Mean absolute deviation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prod()</span></code></p></td>
+<td><p>Product of all items</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></td>
+<td><p>Sum of all items</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are all methods of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="docutils literal notranslate"><span class="pre">Series</span></code> objects.</p>
+<p>Let’s calculate some statistics</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank                   288.819436
+year                     3.205962
+runtime                 18.810908
+rating                   0.945429
+votes               188762.647518
+revenue_millions        96.412043
+metascore               17.194757
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.375
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="groupby-split-apply-combine">
+<h3>GroupBy: Split, Apply, Combine<a class="headerlink" href="#groupby-split-apply-combine" title="Permalink to this headline">¶</a></h3>
+<p>Simple aggregations can give you a flavor of your dataset, but often we would prefer to aggregate conditionally on some label or index: this is implemented in the so-called groupby operation. The name “group by” comes from a command in the SQL database language, but it is perhaps more illuminative to think of it in the terms first coined by Hadley Wickham of Rstats fame: split, apply, combine.</p>
+<img src="https://github.com/jakevdp/PythonDataScienceHandbook/raw/master/notebooks/figures/03.08-split-apply-combine.png" style="width:60%" /></div>
+<div class="section" id="column-indexing">
+<h3>Column indexing<a class="headerlink" href="#column-indexing" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object supports column indexing in the same way as the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, and returns a modified <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object.
+For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;genre&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f31039703d0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;genre&#39;</span><span class="p">)[</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f310397bb50&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;genre&#39;</span><span class="p">)[</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>genre
+Adventure,Drama,Fantasy       286.79
+Action,Adventure              262.03
+Adventure,Fantasy             258.36
+Animation,Action,Adventure    215.40
+Action,Fantasy,War            210.59
+                               ...  
+Animation,Comedy,Drama          0.29
+Adventure                       0.15
+Horror,Mystery,Sci-Fi           0.15
+Action,Biography,Crime          0.10
+Adventure,Drama                 0.06
+Name: revenue_millions, Length: 207, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="applying-functions">
+<h2>Applying functions<a class="headerlink" href="#applying-functions" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to iterate over a DataFrame or Series as you would with a list, but doing so — especially on large datasets — is very slow.</p>
+<p>An efficient alternative is to <code class="docutils literal notranslate"><span class="pre">apply()</span></code> a function to the dataset. For example, we could use a function to convert movies with an 8.0 or greater to a string value of “good” and the rest to “bad” and use this transformed values to create a new column.</p>
+<p>First we would create a function that, when given a rating, determines if it’s good or bad:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rating_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">8.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;good&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;bad&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we want to send the entire rating column through this function, which is what <code class="docutils literal notranslate"><span class="pre">apply()</span></code> does:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span><span class="s2">&quot;rating_category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rating_function</span><span class="p">)</span>
+<span class="n">movies_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>genre</th>
+      <th>description</th>
+      <th>director</th>
+      <th>actors</th>
+      <th>year</th>
+      <th>runtime</th>
+      <th>rating</th>
+      <th>votes</th>
+      <th>revenue_millions</th>
+      <th>metascore</th>
+      <th>rating_category</th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>1</td>
+      <td>Action,Adventure,Sci-Fi</td>
+      <td>A group of intergalactic criminals are forced ...</td>
+      <td>James Gunn</td>
+      <td>Chris Pratt, Vin Diesel, Bradley Cooper, Zoe S...</td>
+      <td>2014</td>
+      <td>121</td>
+      <td>8.1</td>
+      <td>757074</td>
+      <td>333.13</td>
+      <td>76.0</td>
+      <td>good</td>
+    </tr>
+    <tr>
+      <th>Prometheus</th>
+      <td>2</td>
+      <td>Adventure,Mystery,Sci-Fi</td>
+      <td>Following clues to the origin of mankind, a te...</td>
+      <td>Ridley Scott</td>
+      <td>Noomi Rapace, Logan Marshall-Green, Michael Fa...</td>
+      <td>2012</td>
+      <td>124</td>
+      <td>7.0</td>
+      <td>485820</td>
+      <td>126.46</td>
+      <td>65.0</td>
+      <td>bad</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Besides being much more concise than a loop structure, using <code class="docutils literal notranslate"><span class="pre">apply()</span></code> will also be much faster than iterating manually over rows because pandas is utilizing vectorization.</p>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>Another great thing about pandas is that it integrates with Matplotlib, so you get the ability to plot directly off DataFrames and Series. To get started we need to import Matplotlib:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-from-an-ipython-notebook">
+<h3>Plotting from an IPython notebook<a class="headerlink" href="#plotting-from-an-ipython-notebook" title="Permalink to this headline">¶</a></h3>
+<p>Plotting interactively within an IPython notebook can be done with the <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> command, and works in a similar way to the IPython shell.
+In the IPython notebook, you also have the option of embedding graphics directly in the notebook, with two possible options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">notebook</span></code> will lead to <em>interactive</em> plots embedded within the notebook</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> will lead to <em>static</em> images of your plot embedded in the notebook</p></li>
+</ul>
+<p>We will generally opt for <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>A simple plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Descriptive_Analytics_119_0.png" src="_images/02_Descriptive_Analytics_119_0.png" />
+</div>
+</div>
+<div class="section" id="matplotlib-options">
+<h4>Matplotlib options<a class="headerlink" href="#matplotlib-options" title="Permalink to this headline">¶</a></h4>
+<p>If you are using Matplotlib from within a script, the function <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> is your friend.
+<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> starts an event loop, looks for all currently active figure objects, and opens one or more interactive windows that display your figure or figures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)})</span> <span class="c1"># set font and plot size to be larger</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can begin. There won’t be a lot of coverage on plotting, but it should be enough to explore you’re data easily.</p>
+<p><strong>Side note:</strong>
+For categorical variables utilize Bar Charts* and Boxplots.  For continuous variables utilize Histograms, Scatterplots, Line graphs, and Boxplots.</p>
+</div>
+</div>
+<div class="section" id="scatterplot">
+<h3>Scatterplot<a class="headerlink" href="#scatterplot" title="Permalink to this headline">¶</a></h3>
+<p>Let’s plot the relationship between ratings and revenue. All we need to do is call <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> on <code class="docutils literal notranslate"><span class="pre">movies_df</span></code> with some info about how to construct the plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;revenue_millions&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Revenue (millions) vs Rating&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Descriptive_Analytics_125_0.png" src="_images/02_Descriptive_Analytics_125_0.png" />
+</div>
+</div>
+<p>The semicolon is not a syntax error, just a way to hide extra output in Jupyter notebooks.</p>
+</div>
+<div class="section" id="histogram">
+<h3>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h3>
+<p>If we want to plot a simple Histogram based on a single column, we can call plot on a column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Rating&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Descriptive_Analytics_128_0.png" src="_images/02_Descriptive_Analytics_128_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="boxplot">
+<h3>Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">¶</a></h3>
+<p>Using a Boxplot we can visualize the rating quartiles of the n directors with the most movies:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">directors</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;director&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">movies_df</span><span class="p">[</span><span class="n">movies_df</span><span class="p">[</span><span class="s1">&#39;director&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">directors</span><span class="p">)]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">],</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;director&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02_Descriptive_Analytics_130_0.png" src="_images/02_Descriptive_Analytics_130_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
+<p>Exploring, cleaning, transforming, and visualization data with pandas in Python is an essential skill in data science. Just cleaning wrangling data is 80% of your job as a Data Scientist. After a few projects and some practice, you should be very comfortable with most of the basics.</p>
+<p>To keep improving, view the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/tutorials.html">extensive tutorials</a> offered by the official pandas docs, follow along with a few <a class="reference external" href="https://www.kaggle.com/kernels">Kaggle kernels</a>, and keep working on your own projects!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01_Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

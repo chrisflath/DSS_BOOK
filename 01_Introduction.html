@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction &#8212; Decision Support Systems</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="" href="02_Descriptive_Analytics.html" />
+    <link rel="prev" title="DSS_BOOK" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Decision Support Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   DSS_BOOK
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Descriptive_Analytics.html">
+   <div class="bar_title">
+   </div>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01_Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chair-of-information-systems-and-business-analytics">
+   Chair of Information Systems and Business Analytics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#team">
+     Team
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-areas">
+     Research Areas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#master-teaching-program">
+     Master Teaching Program
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#course-organization">
+   Course Organization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tentative-schedule-of-topics">
+     Tentative Schedule of Topics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#programming-assignments">
+     Programming Assignments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-language-python">
+   Programming Language (Python)
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/pds2122/course/blob/main/nbs/01_Introduction.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class='bar_title'></div>
+<p><em>Decision Support Systems</em></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Nikolai Stein / Matthias Griebel<br>
+Chair of Information Systems and Business Analytics</p>
+<p>Winter Semester 21/22</p>
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Chair-of-Information-Systems-and-Business-Analytics" data-toc-modified-id="Chair-of-Information-Systems-and-Business-Analytics-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Chair of Information Systems and Business Analytics</a></span><ul class="toc-item"><li><span><a href="#Team" data-toc-modified-id="Team-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Team</a></span></li><li><span><a href="#Research-Areas" data-toc-modified-id="Research-Areas-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Research Areas</a></span></li><li><span><a href="#Master-Teaching-Program" data-toc-modified-id="Master-Teaching-Program-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Master Teaching Program</a></span></li></ul></li><li><span><a href="#Course-Organization" data-toc-modified-id="Course-Organization-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Course Organization</a></span><ul class="toc-item"><li><span><a href="#Learning-Objectives" data-toc-modified-id="Learning-Objectives-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Learning Objectives</a></span></li><li><span><a href="#Tentative-Schedule-of-Topics" data-toc-modified-id="Tentative-Schedule-of-Topics-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Tentative Schedule of Topics</a></span></li><li><span><a href="#Programming-Assignments" data-toc-modified-id="Programming-Assignments-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Programming Assignments</a></span></li></ul></li><li><span><a href="#Programming-Language-(Python)" data-toc-modified-id="Programming-Language-(Python)-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Programming Language (Python)</a></span></li></ul></div><div class="section" id="chair-of-information-systems-and-business-analytics">
+<h2>Chair of Information Systems and Business Analytics<a class="headerlink" href="#chair-of-information-systems-and-business-analytics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="team">
+<h3>Team<a class="headerlink" href="#team" title="Permalink to this headline">¶</a></h3>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/01/team.png" style="width:80%"></div>
+<div class="section" id="research-areas">
+<h3>Research Areas<a class="headerlink" href="#research-areas" title="Permalink to this headline">¶</a></h3>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/01/research.png" style="width:80%"></div>
+<div class="section" id="master-teaching-program">
+<h3>Master Teaching Program<a class="headerlink" href="#master-teaching-program" title="Permalink to this headline">¶</a></h3>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/01/courses_master.png" style="width:80%"></div>
+</div>
+<div class="section" id="course-organization">
+<h2>Course Organization<a class="headerlink" href="#course-organization" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Classes</p>
+<ul>
+<li><p>Lecture: 	Thursday 10:15 – 11:45</p></li>
+<li><p>Tutorial: After Lecture</p></li>
+</ul>
+</li>
+<li><p>Self-study and Tutorial</p>
+<ul>
+<li><p>Work on (bi-)weekly assignments and programming examples</p></li>
+<li><p>Worksheet submissions are mandatory</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>WueCampus</p>
+<ul>
+<li><p>Forum and information</p></li>
+</ul>
+</li>
+<li><p>Github</p>
+<ul>
+<li><p>Slides and worksheets</p></li>
+<li><p>Submission of solutions</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p><strong>Examination</strong>: Graded capstone group project</p>
+<ul>
+<li><p>Work on a real-world problem set</p></li>
+<li><p>Groups of 3 students</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="learning-objectives">
+<h3>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The foundations, <strong>frameworks and applications</strong> of the emerging field of data science</p></li>
+<li><p>Design, implement, and evaluate the core algorithms underlying an <strong>end-to-end data science workflow</strong>, including data import, analysis, and presentation of information</p></li>
+<li><p>Leverage the <strong>Python</strong> application programming interface (API) ecosystem and data infrastructure that supports data acquisition, storage, retrieval and analysis</p></li>
+<li><p>The application of a data-based <strong>analytical approach</strong> to identify and solve problems</p></li>
+<li><p>Implementation and execution skills for <strong>data-driven business analytics</strong></p></li>
+</ul>
+</div>
+<div class="section" id="tentative-schedule-of-topics">
+<h3>Tentative Schedule of Topics<a class="headerlink" href="#tentative-schedule-of-topics" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Introduction, Jupyter Notebooks, Version Control (<strong>today</strong>)</p></li>
+<li><p>Descriptive Analytics</p></li>
+<li><p>Basic Machine Learning</p></li>
+<li><p>Feature Engineering</p></li>
+<li><p>Deep Learning on Tabular Data</p></li>
+<li><p>Deep Learning for Computer Vision</p></li>
+<li><p>Deep Learning for Natural Language Processing</p></li>
+</ol>
+</div>
+<div class="section" id="programming-assignments">
+<h3>Programming Assignments<a class="headerlink" href="#programming-assignments" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Initial Assignment (<strong>this week</strong>, not graded)</p></li>
+<li><p>Descriptive Analytics</p></li>
+<li><p>Machine Learning and Feature Engineering</p></li>
+<li><p>Deep Learning on Tabular Data</p></li>
+<li><p>Deep Learning for Computer Vision</p></li>
+<li><p>Deep Learning for Computer Vision II</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="programming-language-python">
+<h2>Programming Language (Python)<a class="headerlink" href="#programming-language-python" title="Permalink to this headline">¶</a></h2>
+<p><strong>Python is <s>becoming</s> the world’s most popular coding language</strong></p>
+<p>For the first time in more than 20 years we have a new leader of the pack: the Python programming language</p>
+<img src="https://github.com/NikoStein/pds_data/raw/main/images/01/tiobe_2021.png" style="width:50%">
+<p>Source: <a class="reference external" href="https://www.tiobe.com/tiobe-index/">Tiobe</a></p>
+<p><strong>Why Python?</strong></p>
+<p>While there are several great languages for data analysis (such as R, Julia, Scala, …) we decided to use python for this class because of the following reasons:</p>
+<ul class="simple">
+<li><p>Excellent interactive shell and a large collection of open source packages</p></li>
+<li><p>Very simple syntax</p></li>
+<li><p>Simple enough for things to happen quickly and powerful enough to allow the implementation of the most complex ideas</p></li>
+<li><p>Several highly optimized machine learning libraries that you can drag and drop into your code even if you know a minimum of Python</p></li>
+<li><p>Good visualization capabilities</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">DSS_BOOK</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02_Descriptive_Analytics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><div class='bar_title'></div></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
