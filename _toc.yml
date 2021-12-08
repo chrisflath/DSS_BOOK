@@ -2,6 +2,6 @@
 format: jb-article
 root: 00_Introduction.ipynb
 sections:
-- file: 00_Introduction.ipynb
-- file: 00_PuLP_Introduction.ipynb
-- file: 01_Descriptive_Analytics.ipynb
+- file: 00_Introduction
+- file: 00_PuLP_Introduction
+- file: 01_Descriptive_Analytics
