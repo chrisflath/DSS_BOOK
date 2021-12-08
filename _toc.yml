@@ -1,7 +1,7 @@
 # In _toc.yml
 format: jb-article
-root: README.md
+root: 00_Introduction.ipynb
 sections:
 - file: 00_Introduction
 - file: 00_PuLP_Introduction
-- file: 02_Descriptive_Analytics
+- file: 01_Descriptive_Analytics
