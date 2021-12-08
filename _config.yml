@@ -1,5 +1,5 @@
 # in _config.yml
 title: "Decision Support Systems"
-logo: images/unilogo.png"
+logo: images/unilogo.png
 execute:
   execute_notebooks: 'off'
