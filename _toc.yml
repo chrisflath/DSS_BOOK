@@ -1,6 +1,6 @@
 # In _toc.yml
 format: jb-article
-root: index
+root: README.md
 sections:
 - file: 01_Introduction
 - file: 02_Descriptive_Analytics
