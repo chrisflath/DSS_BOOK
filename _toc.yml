@@ -2,5 +2,6 @@
 format: jb-article
 root: README.md
 sections:
-- file: 01_Introduction
+- file: 00_Introduction
+- file: 00_PuLP_Introduction
 - file: 02_Descriptive_Analytics
