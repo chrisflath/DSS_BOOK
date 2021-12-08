@@ -5,7 +5,7 @@
 
 # <div class='bar_title'></div>
 # 
-# *Practical Data Science*
+# *Decision Support Systems*
 # 
 # # Introduction
 # 
