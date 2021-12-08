@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="" href="02_Descriptive_Analytics.html" />
+    <link rel="next" title="Linear Programming" href="00_PuLP_Introduction.html" />
     <link rel="prev" title="DSS_BOOK" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -103,9 +103,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_Descriptive_Analytics.html">
-   <div class="bar_title">
-   </div>
+  <a class="reference internal" href="00_PuLP_Introduction.html">
+   Linear Programming
   </a>
  </li>
 </ul>
@@ -149,7 +148,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/01_Introduction.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/00_Introduction.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -174,7 +173,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_Introduction.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/00_Introduction.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -229,18 +228,13 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-objectives">
-     Learning Objectives
+    <a class="reference internal nav-link" href="#course-objectives">
+     Course Objectives
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tentative-schedule-of-topics">
      Tentative Schedule of Topics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-assignments">
-     Bonus Assignments
     </a>
    </li>
   </ul>
@@ -298,29 +292,55 @@ Chair of Information Systems and Business Analytics</p>
 <div class="section" id="course-organization">
 <h2>Course Organization<a class="headerlink" href="#course-organization" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>WueCampus</p>
-<ul>
-<li><p>Forum and information</p></li>
+<li><p>Course times
+− Lecture: Wednesday 12:15 – 13:45 Alte IHK HS
+− Tutorial: Thursday 12:15 – 13:45 CIP II</p></li>
+<li><p>Material on WueCampus
+− Lecture slides
+− Exercises
+− Forum
+− Access Code: DSS1920</p></li>
+<li><p>Assessment
+− Exam + optional Bonus from tutorials</p></li>
 </ul>
-</li>
-<li><p>Github</p>
-<ul>
-<li><p>Slides and worksheets</p></li>
-<li><p>Submission of solutions</p></li>
-</ul>
-</li>
-</ul>
+<div class="section" id="course-objectives">
+<h3>Course Objectives<a class="headerlink" href="#course-objectives" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Examination</strong>: Graded exam</p></li>
+<li><p>Understand the structure of classic business decision problems</p></li>
+<li><p>Develop the skills for simplifying real business problems and transform them into (quantitative) models</p></li>
+<li><p>Learn methods for solving and optimizing typical problem classes</p></li>
+<li><p>Gather experience in implementing Decision Support Systems using spreadsheets and other quantitative software tools</p></li>
 </ul>
-<div class="section" id="learning-objectives">
-<h3>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="tentative-schedule-of-topics">
 <h3>Tentative Schedule of Topics<a class="headerlink" href="#tentative-schedule-of-topics" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="bonus-assignments">
-<h3>Bonus Assignments<a class="headerlink" href="#bonus-assignments" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Introduction</p></li>
+<li><p>Linear Programming</p>
+<ol class="simple">
+<li><p>Overview</p></li>
+<li><p>Duality</p></li>
+<li><p>Modeling</p></li>
+</ol>
+</li>
+<li><p>Linear Programming under Uncertainty</p>
+<ol class="simple">
+<li><p>Sensitivity Analysis</p></li>
+<li><p>Robust Optimization</p></li>
+<li><p>Stochastic Programming</p></li>
+</ol>
+</li>
+<li><p>Integer Programming</p>
+<ol class="simple">
+<li><p>Introduction</p></li>
+<li><p>Classic Problems</p></li>
+<li><p>Large Scale Optimization</p></li>
+</ol>
+</li>
+<li><p>Non-linear Programming</p></li>
+<li><p>Dynamic Programming</p></li>
+<li><p>Queuing Theory</p></li>
+</ol>
 </div>
 </div>
 </div>
@@ -357,10 +377,10 @@ Chair of Information Systems and Business Analytics</p>
             <p class="prev-next-title">DSS_BOOK</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_Descriptive_Analytics.html" title="next page">
+    <a class='right-next' id="next-link" href="00_PuLP_Introduction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><div class='bar_title'></div></p>
+        <p class="prev-next-title">Linear Programming</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

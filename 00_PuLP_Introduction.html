@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Programming &#8212; Decision Support Systems</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="00_Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/unilogo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Decision Support Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   DSS_BOOK
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Linear Programming
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/00_PuLP_Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/00_PuLP_Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-programming-with-python-and-pulp">
+   Linear Programming with Python and PuLP
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-syntax">
+     Python syntax
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indentation">
+       Indentation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variables">
+       Variables
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comments">
+       Comments
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lists">
+       Lists
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dictionaries">
+       Dictionaries
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pulp-syntax">
+     PuLP syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class='bar_title'></div>
+<p><em>Decision Support Systems</em></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="linear-programming">
+<h1>Linear Programming<a class="headerlink" href="#linear-programming" title="Permalink to this headline">¶</a></h1>
+<p>Toni Greif<br>
+Chair of Information Systems and Business Analytics</p>
+<p>Please, make sure you are signed in with your Google account and you created a copy of the notebook (preferentially in Google Drive). Otherwise, you can not save your edited notebooks.</p>
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Linear-Programming-with-Python-and-PuLP" data-toc-modified-id="Linear-Programming-with-Python-and-PuLP-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Linear Programming with Python and PuLP</a></span><ul class="toc-item"><li><span><a href="#Python-syntax" data-toc-modified-id="Python-syntax-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Python syntax</a></span><ul class="toc-item"><li><span><a href="#Indentation" data-toc-modified-id="Indentation-1.1.1"><span class="toc-item-num">1.1.1&nbsp;&nbsp;</span>Indentation</a></span></li><li><span><a href="#Variables" data-toc-modified-id="Variables-1.1.2"><span class="toc-item-num">1.1.2&nbsp;&nbsp;</span>Variables</a></span></li><li><span><a href="#Comments" data-toc-modified-id="Comments-1.1.3"><span class="toc-item-num">1.1.3&nbsp;&nbsp;</span>Comments</a></span></li><li><span><a href="#Lists" data-toc-modified-id="Lists-1.1.4"><span class="toc-item-num">1.1.4&nbsp;&nbsp;</span>Lists</a></span></li><li><span><a href="#Dictionaries" data-toc-modified-id="Dictionaries-1.1.5"><span class="toc-item-num">1.1.5&nbsp;&nbsp;</span>Dictionaries</a></span></li></ul></li><li><span><a href="#PuLP-syntax" data-toc-modified-id="PuLP-syntax-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>PuLP syntax</a></span></li></ul></li></ul></div><p>Don’t forget, each session the PuLP package must be installed (not necessary if you don’t use the Colab enviroment) and imported.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install pulp
+<span class="kn">from</span> <span class="nn">pulp</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pulp
+  Downloading PuLP-2.3.1-py3-none-any.whl (40.6 MB)
+     |████████████████████████████████| 40.6 MB 25.7 MB/s eta 0:00:01
+?25hCollecting amply&gt;=0.1.2
+  Downloading amply-0.1.4-py3-none-any.whl (16 kB)
+Requirement already satisfied: pyparsing in /usr/local/anaconda3/lib/python3.8/site-packages (from amply&gt;=0.1.2-&gt;pulp) (2.4.7)
+Requirement already satisfied: docutils&gt;=0.3 in /usr/local/anaconda3/lib/python3.8/site-packages (from amply&gt;=0.1.2-&gt;pulp) (0.16)
+Installing collected packages: amply, pulp
+Successfully installed amply-0.1.4 pulp-2.3.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linear-programming-with-python-and-pulp">
+<h2>Linear Programming with Python and PuLP<a class="headerlink" href="#linear-programming-with-python-and-pulp" title="Permalink to this headline">¶</a></h2>
+<p>Linear Programming involves maximising or minimising a linear objective function, subject to a set of linear inequality or equality constraints.</p>
+<p>Based on our example from the last tutorial, we will explain the Python and PuLP syntax in more detail.</p>
+<div class="section" id="python-syntax">
+<h3>Python syntax<a class="headerlink" href="#python-syntax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="indentation">
+<h4>Indentation<a class="headerlink" href="#indentation" title="Permalink to this headline">¶</a></h4>
+<p>Indentation refers to the spaces at the beginning of a code line. In Python is very important. Python uses indentation to indicate a block of code.</p>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Five is greater than two!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Five is greater than two!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variables">
+<h4>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h4>
+<p>In Python variables are created the moment you assign a value to it.</p>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, World!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comments">
+<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
+<p>In-code comments start with a #, and Python will render the rest of the line as a comment:</p>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This is a comment.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, World!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lists">
+<h4>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h4>
+<p>Lists are containers that hold a number of other objects, in a given order.
+To create a list, put a number of expressions in square brackets:</p>
+<p><code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">=</span> <span class="pre">[expression,</span> <span class="pre">...]</span></code></p>
+<p>The expressions can be anything; you can put all kinds of objects in lists, including other lists.</p>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">firstList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">firstList</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;red&#39;, &#39;blue&#39;, 0, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The for-in statement makes it easy to loop over the items in a list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">firstList</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>red
+blue
+0
+1
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Accessing Lists</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">len(L)</span></code> returns the number of items in the list, <code class="docutils literal notranslate"><span class="pre">L[i]</span></code> returns the item at index i (the first item has index 0), and <code class="docutils literal notranslate"><span class="pre">L[i:j]</span></code> returns a new list, containing the objects between i and j.</p>
+<p><strong>List comprehensions</strong></p>
+<p>Python also supports computed lists, called “list comprehensions”. In its simplest form, a list comprehension has the following syntax:</p>
+<p><code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">=</span> <span class="pre">[expression(variable)</span> <span class="pre">for</span> <span class="pre">variable</span> <span class="pre">in</span> <span class="pre">sequence]</span></code></p>
+<p>where the expression is evaluated once, for every item in the sequence.</p>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">secondList</span> <span class="o">=</span> <span class="p">[</span><span class="n">variable</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">secondList</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dictionaries">
+<h4>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h4>
+<p>Dictionaries written with curly brackets are collections which are unordered, changeable and indexed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span>
+           <span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 1964}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can access the items of a dictionary by referring to its key name, inside square brackets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mustang
+</pre></div>
+</div>
+</div>
+</div>
+<p>A dictionary can also contain many dictionaries, this is called nested dictionaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">portion</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Milk&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+           <span class="s1">&#39;Choco&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+          <span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">portion</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Milk&#39;: {&#39;A&#39;: 1, &#39;B&#39;: 2}, &#39;Choco&#39;: {&#39;A&#39;: 3, &#39;B&#39;: 2}}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pulp-syntax">
+<h3>PuLP syntax<a class="headerlink" href="#pulp-syntax" title="Permalink to this headline">¶</a></h3>
+<p>Revenue:
+$<span class="math notranslate nohighlight">\(9*x_A + 14*x_B\)</span><span class="math notranslate nohighlight">\(
+Costs for Milk:
+\)</span><span class="math notranslate nohighlight">\(0.1*1*x_A + 0.1*3*x_B\)</span><span class="math notranslate nohighlight">\(
+Costs for Choco:
+\)</span><span class="math notranslate nohighlight">\(0.3*3*x_A + 0.3*2*x_B \)</span>$</p>
+<p>Maximal Amount of Milk:
+$<span class="math notranslate nohighlight">\(1*x_A + 2*x_B\)</span><span class="math notranslate nohighlight">\(
+Maximal Amount of Choco:
+    \)</span><span class="math notranslate nohighlight">\(3*x_A + 2*x_B\)</span>$</p>
+<p>We want to maximize profit, which is made up of revenue minus costs. In the following, the problem is presented in general terms for any number of products and ingredients.</p>
+<div class="math notranslate nohighlight">
+\[\max \sum_{p\ \in\ products} prices_p * quantity_p - \sum_{i\ \in\ ingredients}\sum_{p\ \in\ products}
+costs_i * portion_{i,p} * quantity_p \]</div>
+<p>subject to:
+$<span class="math notranslate nohighlight">\(\sum_{p\ \in\ products} portion_{i,p} * quantity_p\leq max\_ingredients_i\quad \forall i\ \in\ ingredients\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(quantity_p \geq 0\quad  \forall p\in\ products\)</span>$</p>
+<p>Step 1: Create the Linear programming problem <code class="docutils literal notranslate"><span class="pre">LpProblem()</span></code> as maximization <code class="docutils literal notranslate"><span class="pre">LpMaximize</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">LpProblem</span><span class="p">(</span><span class="s2">&quot;chocolate maufacturing&quot;</span><span class="p">,</span> <span class="n">LpMaximize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/anaconda3/lib/python3.8/site-packages/pulp/pulp.py:1198: UserWarning: Spaces are not permitted in the name. Converted to &#39;_&#39;
+  warnings.warn(&quot;Spaces are not permitted in the name. Converted to &#39;_&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 2: Set the lists for the index sets (here <span class="math notranslate nohighlight">\(products\ p\)</span> and <span class="math notranslate nohighlight">\(ingredients\ i\)</span>) and the dictionaries for the parameters (here <span class="math notranslate nohighlight">\(prices, costs, portion, max\_ingredients\)</span>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Index sets</span>
+<span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<span class="n">ingredients</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Milk&#39;</span><span class="p">,</span> <span class="s1">&#39;Choco&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">costs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Milk&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> 
+         <span class="s1">&#39;Choco&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">}</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+          <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
+
+<span class="n">portion</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Milk&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+           <span class="s1">&#39;Choco&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}</span>
+
+<span class="n">max_ingredients</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Milk&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> 
+                   <span class="s1">&#39;Choco&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 3: Create the continuous decision variables <code class="docutils literal notranslate"><span class="pre">LpVariable.dicts()</span></code> for the corresponding indexes (here <span class="math notranslate nohighlight">\(products\)</span>). Set  <code class="docutils literal notranslate"><span class="pre">lowBound=0</span></code> to include the second part of the constraints here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="o">.</span><span class="n">dicts</span><span class="p">(</span><span class="s2">&quot;quantity&quot;</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s1">&#39;Continuous&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes you don’t need lists for the indexes and you can directly use the keys of the dictionaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
+B
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prices</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
+B
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 4: Add the objective <code class="docutils literal notranslate"><span class="pre">lpSum()</span></code> to your model <code class="docutils literal notranslate"><span class="pre">m</span></code>. Note that two lists in python can only be added <code class="docutils literal notranslate"><span class="pre">list1</span> <span class="pre">+</span> <span class="pre">list2</span></code> and not subtracted, so we have to add the minus sign to the costs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Objective </span>
+<span class="n">m</span> <span class="o">+=</span> <span class="n">lpSum</span><span class="p">([</span><span class="n">prices</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">]</span> <span class="c1">#this is the revenue</span>
+           <span class="o">+</span><span class="p">[</span><span class="o">-</span><span class="n">costs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">portion</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ingredients</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">])</span> <span class="c1">#these are the costs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Summations <span class="math notranslate nohighlight">\(\sum_{item\ \in\ list}x_p\)</span> have become calls to
+<code class="docutils literal notranslate"><span class="pre">lpSum([x[item]</span> <span class="pre">for</span> <span class="pre">item</span> <span class="pre">in</span> <span class="pre">list]).</span></code></p>
+<p>Step 5: Set the constraints (note, we already respect the second part of the constraints in our variables).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Constraints</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ingredients</span><span class="p">:</span>
+    <span class="n">m</span> <span class="o">+=</span> <span class="n">lpSum</span><span class="p">(</span><span class="n">portion</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_ingredients</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The quantifiers (here <span class="math notranslate nohighlight">\(\forall i \in ingredients\)</span>) become <code class="docutils literal notranslate"> <span class="pre">for...in</span> <span class="pre">loops</span></code> and summations have become calls to <code class="docutils literal notranslate"><span class="pre">lpSum()</span></code>.</p>
+<p>As you can see, the impementiation is quite similar to the mathematical notation.</p>
+<div class="math notranslate nohighlight">
+\[\max \sum_{p\ \in\ products} prices_p * quantity_p - \sum_{i\ \in\ ingredients}\sum_{p\ \in\ products}
+costs_i * portion_{i,p} * quantity_p \]</div>
+<p>subject to:
+$<span class="math notranslate nohighlight">\(\sum_{p\ \in\ products} portion_{i,p} * quantity_p\leq max\_ingredients_i\quad \forall i\in ingredients\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(quantity_p \geq 0\quad  \forall p\in products\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>chocolate_maufacturing:
+MAXIMIZE
+8.0*quantity_A + 13.200000000000001*quantity_B + 0.0
+SUBJECT TO
+_C1: quantity_A + 2 quantity_B &lt;= 20
+
+_C2: 3 quantity_A + 2 quantity_B &lt;= 40
+
+VARIABLES
+quantity_A Continuous
+quantity_B Continuous
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 6: Solve the model <code class="docutils literal notranslate"><span class="pre">m.solve()</span></code> and check the optimality <code class="docutils literal notranslate"><span class="pre">LpStatus[m.status]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve</span>
+<span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">LpStatus</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">status</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Optimal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 7: Print the solution. <code class="docutils literal notranslate"><span class="pre">m.variables()</span></code> is the variable list of our model <code class="docutils literal notranslate"><span class="pre">m</span></code>. With <code class="docutils literal notranslate"><span class="pre">.name</span></code> we get their variable names and with <code class="docutils literal notranslate"><span class="pre">.varValue</span></code> the values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">varValue</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>quantity_A = 10.0
+quantity_B = 5.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.value</span></code> evaluates the objective function for the solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">value</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">objective</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>146.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="00_Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
