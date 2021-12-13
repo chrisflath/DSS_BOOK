@@ -2,4 +2,4 @@
 title: "Decision Support Systems"
 logo: images/unilogo.png
 execute:
-  execute_notebooks: 'off'
+  execute_notebooks: 'auto'
