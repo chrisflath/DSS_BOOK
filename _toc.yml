@@ -5,3 +5,4 @@ sections:
 - file: 00_Introduction
 - file: 00_PuLP_Introduction
 - file: 01_Descriptive_Analytics
+- file: 01_Simplex_Algorithm
