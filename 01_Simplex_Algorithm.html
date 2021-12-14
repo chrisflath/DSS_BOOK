@@ -202,16 +202,14 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
+  <a class="reference internal nav-link" href="#identifying-solution-candidates-basic-solution">
+   Identifying solution candidates: Basic Solution
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-solution">
-     Basic Solution
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-simplex-algorithm">
+   The Simplex Algorithm
+  </a>
  </li>
 </ul>
 
@@ -226,8 +224,6 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="simplex-algorithm">
 <h1>Simplex Algorithm<a class="headerlink" href="#simplex-algorithm" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>“The simplex method is a method for solving problems in linear programming. This method, invented by George Dantzig in 1947, tests adjacent vertices of the feasible set (which is a polytope) in sequence so that at each new vertex the objective function improves or is unchanged.” (Wolfram MathWorld)</p>
 </div></blockquote>
@@ -235,22 +231,36 @@
 <p><span class="math notranslate nohighlight">\(\mathbf{x} \leq \mathbf{b} \leftrightarrow \mathbf{x} +  \mathbf{s} =  \mathbf{b} \text{ with }  \mathbf{s} \geq 0\)</span></p>
 <p>If there are n+m variables in a system of m equations (where n&gt;m),
 by setting n variables to zero we can use the remaining m variables and solve the equations.</p>
-<div class="section" id="basic-solution">
-<h3>Basic Solution<a class="headerlink" href="#basic-solution" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="identifying-solution-candidates-basic-solution">
+<h2>Identifying solution candidates: Basic Solution<a class="headerlink" href="#identifying-solution-candidates-basic-solution" title="Permalink to this headline">¶</a></h2>
 <p>For LP problems in normal form with 𝑚 linear inequalities with 𝑛 variables a basic solution is obtained by setting any 𝑛  of the 𝑛+𝑚 variables to zero and solving for the remaining 𝑚 variables
-the 𝑚 non-zero variables are called <em>basic variables</em> the remaining 𝑛 zero-valued variables are called <em>non-basic variables</em>.</p>
-<p><strong>In our toy factory example:</strong>
-Heuristic solution: 40 soldiers, 20 trains, 20 units of carpenting leftover (0 leftover finishing, 0 leftover production allowance for soldiers)</p>
-<p>Other variants:
-No leftover carpenting, no leftover finishing</p>
-<p>No leftover carpenting, no leftover allowance</p>
-<p>Produce nothing</p>
-<p>produce no soldiers with no carpenting left</p>
-<p>produce no soldiers with no finishing left</p>
-<p>produce no soldiers with no maxsoldiers left
-produce no trains with no finishing left
-produce no trains with no carpenting left
-produce no trains with no maxsoldiers left …</p>
+the 𝑚 non-zero variables are called <em>basic variables</em> the remaining 𝑛 zero-valued variables are called <em>non-basic variables</em>. In general, there are at most <span class="math notranslate nohighlight">\(\binom{m+n}{n}\)</span> basic solutions (some may not feasible).</p>
+<p><strong>In our toy factory example:</strong></p>
+<ul class="simple">
+<li><p>Heuristic solution: 40 soldiers, 20 trains, 20 units of carpenting leftover (0 leftover finishing, 0 leftover production allowance for soldiers)</p></li>
+<li><p>No leftover carpenting, no leftover finishing</p></li>
+<li><p>No leftover carpenting, no leftover allowance</p></li>
+<li><p>Produce nothing</p></li>
+<li><p>produce no soldiers with no carpenting left</p></li>
+<li><p>produce no soldiers with no finishing left</p></li>
+<li><p>produce no soldiers with no maxsoldiers left</p></li>
+<li><p>produce no trains with no finishing left</p></li>
+<li><p>produce no trains with no carpenting left</p></li>
+<li><p>produce no trains with no maxsoldiers left …</p></li>
+</ul>
+<p>There are ten possible basic solutions, some are clearly not optimal (doing nothing) or infeasible (e.g., produce no soldiers with no maxsoldiers left). We could in principle solve the linear equation system for each configuration
+BUT: Computational cost would then grow exponentially in the number of variables.</p>
+</div>
+<div class="section" id="the-simplex-algorithm">
+<h2>The Simplex Algorithm<a class="headerlink" href="#the-simplex-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>We need a more efficient way to fix basic variables - this boils down to looking at as few solution candidates as possible. Obvious improvements over the naive approach are taking into account profitability (improvement of objective) and feasibility of alternative basic solutions. This is the basic idea of the Simplex algorithm.</p>
+<p>The simplex procedure constantly improves the current solutions until an optimum is found
+By building a tableau, the changes of variables can be easily observed and applied
+Determining the pivot column and row is to find out the most effective way to improve the objective value.
+Pivoting is the procedure to change the variables and subsequently its feasible solution.
+Elimination of any negativity in the objective function row increases the objective value.
+Therefore, the optimality is reached when there is no negativity existed</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simplex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -499,12 +509,11 @@ produce no trains with no maxsoldiers left …</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Simplex_Algorithm_16_0.png" src="_images/01_Simplex_Algorithm_16_0.png" />
+<img alt="_images/01_Simplex_Algorithm_18_0.png" src="_images/01_Simplex_Algorithm_18_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[20.0, 60.0, 0, 0, 20.0]
 </pre></div>
 </div>
-<img alt="_images/01_Simplex_Algorithm_16_2.png" src="_images/01_Simplex_Algorithm_16_2.png" />
-</div>
+<img alt="_images/01_Simplex_Algorithm_18_2.png" src="_images/01_Simplex_Algorithm_18_2.png" />
 </div>
 </div>
 </div>
