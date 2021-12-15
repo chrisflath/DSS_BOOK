@@ -211,6 +211,11 @@
    The Simplex Algorithm
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-tableau">
+   Setting up the tableau
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -254,13 +259,40 @@ BUT: Computational cost would then grow exponentially in the number of variables
 <div class="section" id="the-simplex-algorithm">
 <h2>The Simplex Algorithm<a class="headerlink" href="#the-simplex-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>We need a more efficient way to fix basic variables - this boils down to looking at as few solution candidates as possible. Obvious improvements over the naive approach are taking into account profitability (improvement of objective) and feasibility of alternative basic solutions. This is the basic idea of the Simplex algorithm.</p>
-<p>The simplex procedure constantly improves the current solutions until an optimum is found
-By building a tableau, the changes of variables can be easily observed and applied
-Determining the pivot column and row is to find out the most effective way to improve the objective value.
-Pivoting is the procedure to change the variables and subsequently its feasible solution.
-Elimination of any negativity in the objective function row increases the objective value.
-Therefore, the optimality is reached when there is no negativity existed</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>The simplex procedure constantly improves the current solution until an optimum is found. The high level flowchart is presented below:</p>
+<img src="images/simplexflow.png" alt="Drawing" style="width: 300px;"/><p>After the setting up the initial tableau the algorithm enters a loop conditional on the current solution being not optimal. Each algorithm iteration then proceeds by determining the pivot column (new basic variable to be included) and row (current basic variable to be removed) such that the the greatest improvement of the objective value is realized. The indidivudal steps are as follows:</p>
+<ul class="simple">
+<li><p>Build tableau: Convert the LP problem to standard form by transforming the objective function and constraints to equality.</p></li>
+<li><p>Check optimality: Check if all values in the bottom row are none-negative. If this is the case, the optimal solution is found. If not, continue to the next step.</p></li>
+<li><p>Find pivot column: Determine the pivot column by locating the most negative value in the bottom row.</p></li>
+<li><p>Find pivot row: Determine the pivot row by dividing the right-hand side values of the constraints by the corresponding value in the pivot column. Select the smallest positive value.</p></li>
+<li><p>Pivoting: Transform the pivot element to 1 and modify the matrix such that all other the values in the pivot column become 0.</p></li>
+</ul>
+<p>In the following we will provide detailed information (and an implementation example) on the different steps:</p>
+</div>
+<div class="section" id="setting-up-the-tableau">
+<h2>Setting up the tableau<a class="headerlink" href="#setting-up-the-tableau" title="Permalink to this headline">¶</a></h2>
+<p>We start with a linear program in standard form:</p>
+<p><span class="math notranslate nohighlight">\(\max \mathbf{c}^T \mathbf{x}\)</span>   s.t.   <span class="math notranslate nohighlight">\(A\mathbf{x}\leq \mathbf{b}\)</span>,  <span class="math notranslate nohighlight">\(\mathbf{x} \geq 0\)</span></p>
+<p>We then perform some straightforward manipulations to turn this system of inequalities into a linear equation system:</p>
+<ul class="simple">
+<li><p>Transform objective function to equation by introducing a variable <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> for the objective value: <span class="math notranslate nohighlight">\(f(\mathbf{x}) - \mathbf{c}^T \mathbf{x} = 0\)</span></p></li>
+<li><p>Transform constraints to equations by introducing positive slack variables:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(a_{11}x_1 + a_{12}x_2 + ... + a_{1n}x_n \leq b_1 \leftrightarrow a_{11}x_1 + a_{12}x_2 + ... + a_{1n}x_n + s_1 = b_1\)</span></p>
+<p><span class="math notranslate nohighlight">\(a_{21}x_1 + a_{22}x_2 + ... + a_{2n}x_n \leq b_2 \leftrightarrow a_{21}x_1 + a_{22}x_2 + ... + a_{2n}x_n + s_2 = b_2\)</span></p>
+<p><span class="math notranslate nohighlight">\(\vdots\)</span></p>
+<p><span class="math notranslate nohighlight">\(a_{m1}x_1 + a_{m2}x_2 + ... + a_{mn}x_n \leq b_m \leftrightarrow a_{m1}x_1 + a_{m2}x_2 + ... + a_{mn}x_n + s_m = b_m\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">xb</span> <span class="o">=</span> <span class="p">[</span><span class="n">eq</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">eq</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">xb</span> <span class="o">+</span> <span class="p">[</span><span class="n">z</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simplex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -271,16 +303,6 @@ Therefore, the optimality is reached when there is no negativity existed</p>
         <span class="n">tableau</span> <span class="o">=</span> <span class="n">pivot_step</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">pivot_position</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">get_solution</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">xb</span> <span class="o">=</span> <span class="p">[</span><span class="n">eq</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">eq</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)]</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">xb</span> <span class="o">+</span> <span class="p">[</span><span class="n">z</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -509,11 +531,11 @@ Therefore, the optimality is reached when there is no negativity existed</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Simplex_Algorithm_18_0.png" src="_images/01_Simplex_Algorithm_18_0.png" />
+<img alt="_images/01_Simplex_Algorithm_19_0.png" src="_images/01_Simplex_Algorithm_19_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[20.0, 60.0, 0, 0, 20.0]
 </pre></div>
 </div>
-<img alt="_images/01_Simplex_Algorithm_18_2.png" src="_images/01_Simplex_Algorithm_18_2.png" />
+<img alt="_images/01_Simplex_Algorithm_19_2.png" src="_images/01_Simplex_Algorithm_19_2.png" />
 </div>
 </div>
 </div>
