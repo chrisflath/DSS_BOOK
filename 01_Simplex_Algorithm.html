@@ -212,8 +212,91 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-the-tableau">
-   Setting up the tableau
+  <a class="reference internal nav-link" href="#setting-up-the-initial-tableau">
+   Setting up the initial tableau
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparation">
+     Preparation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-the-tableau">
+     Building the tableau
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-remarks-on-the-tableau">
+     Some remarks on the tableau
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-implementation">
+     Python implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-optimality">
+   Check optimality
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#procedure">
+     Procedure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Python implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#determine-pivot-element">
+   Determine pivot element
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#determine-pivot-column">
+     Determine pivot column
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#determine-pivot-row">
+     Determine pivot row
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Python implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting">
+   Pivoting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-it-all-together">
+   Putting it all together
   </a>
  </li>
 </ul>
@@ -270,24 +353,140 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </ul>
 <p>In the following we will provide detailed information (and an implementation example) on the different steps:</p>
 </div>
-<div class="section" id="setting-up-the-tableau">
-<h2>Setting up the tableau<a class="headerlink" href="#setting-up-the-tableau" title="Permalink to this headline">¶</a></h2>
-<p>We start with a linear program in standard form:</p>
+<div class="section" id="setting-up-the-initial-tableau">
+<h2>Setting up the initial tableau<a class="headerlink" href="#setting-up-the-initial-tableau" title="Permalink to this headline">¶</a></h2>
+<p>We are given a linear program in standard form:</p>
 <p><span class="math notranslate nohighlight">\(\max \mathbf{c}^T \mathbf{x}\)</span>   s.t.   <span class="math notranslate nohighlight">\(A\mathbf{x}\leq \mathbf{b}\)</span>,  <span class="math notranslate nohighlight">\(\mathbf{x} \geq 0\)</span></p>
+<div class="section" id="preparation">
+<h3>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h3>
 <p>We then perform some straightforward manipulations to turn this system of inequalities into a linear equation system:</p>
 <ul class="simple">
-<li><p>Transform objective function to equation by introducing a variable <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> for the objective value: <span class="math notranslate nohighlight">\(f(\mathbf{x}) - \mathbf{c}^T \mathbf{x} = 0\)</span></p></li>
+<li><p>Transform objective function to equation by introducing a variable <span class="math notranslate nohighlight">\(f(\mathbf{x})=\mathbf{c}^T \mathbf{x}\)</span> for the objective value: <span class="math notranslate nohighlight">\(f(\mathbf{x}) - \mathbf{c}^T \mathbf{x} = 0\)</span></p></li>
 <li><p>Transform constraints to equations by introducing positive slack variables:</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(a_{11}x_1 + a_{12}x_2 + ... + a_{1n}x_n \leq b_1 \leftrightarrow a_{11}x_1 + a_{12}x_2 + ... + a_{1n}x_n + s_1 = b_1\)</span></p>
 <p><span class="math notranslate nohighlight">\(a_{21}x_1 + a_{22}x_2 + ... + a_{2n}x_n \leq b_2 \leftrightarrow a_{21}x_1 + a_{22}x_2 + ... + a_{2n}x_n + s_2 = b_2\)</span></p>
 <p><span class="math notranslate nohighlight">\(\vdots\)</span></p>
 <p><span class="math notranslate nohighlight">\(a_{m1}x_1 + a_{m2}x_2 + ... + a_{mn}x_n \leq b_m \leftrightarrow a_{m1}x_1 + a_{m2}x_2 + ... + a_{mn}x_n + s_m = b_m\)</span></p>
+</div>
+<div class="section" id="building-the-tableau">
+<h3>Building the tableau<a class="headerlink" href="#building-the-tableau" title="Permalink to this headline">¶</a></h3>
+<p>The simplex tableau follows from these manipulations in a straightforward manner: Each row corresponds to one equation, the bottom row corresponds to the objective function. The first column is a label for the row, the subseuqent <span class="math notranslate nohighlight">\(n\)</span> columns are labelled with the corresponding <span class="math notranslate nohighlight">\(x_i\)</span> values, the next <span class="math notranslate nohighlight">\(m\)</span> columns are labelled with the corresponding slack variables <span class="math notranslate nohighlight">\(x_j\)</span> and the last column is the right-hand side <span class="math notranslate nohighlight">\(b\)</span>. In the initial tableau we assume all slack variables to be basic and they are labelled accordingly with <span class="math notranslate nohighlight">\(s_j\)</span>. Below this procedure is illustrated for an example with two variables and two constraints:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></th>
+<th class="head"><p>b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(a_{11}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(a_{12}\)</span>$</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(b_1\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(a_{21}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(a_{22}\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(b_2\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>$<span class="math notranslate nohighlight">\(-c_1\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(-c_2\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>And here is the initial tableau for our toy factory problem:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></th>
+<th class="head"><p>b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(80\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(100\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(40\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>$<span class="math notranslate nohighlight">\(-3\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(-2\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="some-remarks-on-the-tableau">
+<h3>Some remarks on the tableau<a class="headerlink" href="#some-remarks-on-the-tableau" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The bottom right value is the objective value of the current solution (here 0)</p></li>
+<li><p>For basic variables, the columns are all zero except for the row with the corresponding variable label (compare <span class="math notranslate nohighlight">\(s_1\)</span>, <span class="math notranslate nohighlight">\(s_2\)</span>, <span class="math notranslate nohighlight">\(s_3\)</span>)</p></li>
+<li><p>For a solution to be feasible the b column must be non-negative</p></li>
+</ul>
+</div>
+<div class="section" id="python-implementation">
+<h3>Python implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h3>
+<p>This is easily implemented in Python using list operations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># general setup, definition of problem (toy factory)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to create a simplex tableau for a given objective coefficient vector, constraint matrix and right hand side</span>
+<span class="k">def</span> <span class="nf">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">xb</span> <span class="o">=</span> <span class="p">[</span><span class="n">eq</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">eq</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)]</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">xb</span> <span class="o">+</span> <span class="p">[</span><span class="n">z</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -295,23 +494,38 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simplex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">tableau</span> <span class="o">=</span> <span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-
-    <span class="k">while</span> <span class="n">can_be_improved</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
-        <span class="n">pivot_position</span> <span class="o">=</span> <span class="n">get_pivot_position</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
-        <span class="n">tableau</span> <span class="o">=</span> <span class="n">pivot_step</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">pivot_position</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">get_solution</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example tableau</span>
+<span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 1, 1, 0, 0, 80],
+ [2, 1, 0, 1, 0, 100],
+ [1, 0, 0, 0, 1, 40],
+ [-3, -2, 0, 0, 0, 0]]
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="check-optimality">
+<h2>Check optimality<a class="headerlink" href="#check-optimality" title="Permalink to this headline">¶</a></h2>
+<p>For non-basic variables, the bottom row in the tableau indicates how much the objective function can be increased by making this variable a basic variable. Note that given our <span class="math notranslate nohighlight">\(f(\mathbf{x}) - \mathbf{c}^T \mathbf{x} = 0\)</span> setup a negative value indicates a possible increase of the objective value.</p>
+<div class="section" id="procedure">
+<h3>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
+<p>In a maximization context we can then easily verify optimality by checking whether or not there are still negative values remaining. In our case this is clearly the case as the objective coefficient of the <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> columns are -3 and -2. Our current solution is hence not optimal but can be improved.</p>
+</div>
+<div class="section" id="id1">
+<h3>Python implementation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>A possible Python implementations looks as follows and yields the correct result for the optimality check:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">can_be_improved</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to check whether or not a given simplex tableau can be improved (is not optimal)</span>
+<span class="k">def</span> <span class="nf">can_be_improved</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
     <span class="n">z</span> <span class="o">=</span> <span class="n">tableau</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">restrictions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">eq</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
         <span class="n">el</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
@@ -325,11 +539,135 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test on our tableau</span>
+<span class="n">can_be_improved</span><span class="p">(</span><span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="determine-pivot-element">
+<h2>Determine pivot element<a class="headerlink" href="#determine-pivot-element" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="determine-pivot-column">
+<h3>Determine pivot column<a class="headerlink" href="#determine-pivot-column" title="Permalink to this headline">¶</a></h3>
+<p>Given a sub-optimal tableau the next simplex iteration seeks to improve the objective value. To this end we need to include a non-basic variable in the base which has a negative objective coefficient. In our example this is the case for both non-basic variables. In principle you could use any in such a setting - by convention we will take a greedy approach and pick the most negative one resulting in the greatest imminent improvement. Note that there is no garuantee that this is the best choice in general. However, it has proven to be a very good choice across many problem instances. In our example we choose the <span class="math notranslate nohighlight">\(x_1\)</span> column with the most negative value -3.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></th>
+<th class="head"><p>b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></td>
+<td><p><strong>1</strong></p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-odd"><td><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></td>
+<td><p><strong>2</strong></p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></td>
+<td><p><strong>1</strong></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><strong>-3</strong></p></td>
+<td><p>-2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="determine-pivot-row">
+<h3>Determine pivot row<a class="headerlink" href="#determine-pivot-row" title="Permalink to this headline">¶</a></h3>
+<p>Having identified the most promiment new basic variable, we need to identify the current basic variable which will be removed from the base in exchange. To this end, we compare the new variable’s ‘’consumption’’ of the constraints. We do so by dividing the b column by the values from the pivot column. This essentially yields a measure of how many units of the new basic variable can be afforded. The lowest b-divided-by-pivot value is the bottleneck and this row will be the pivot row. The combination of pivot column and pivot row is the pivot element. In our example this is the <span class="math notranslate nohighlight">\(s_3\)</span> row with an allowable increase of 40. The interpretation is as follows: We can increase the number of toy soldiers (<span class="math notranslate nohighlight">\(x_1\)</span>) produced by at most 40 because then the max output constraint becomes binding. Note as soon as this constraint is binding the corresponding slack variable <span class="math notranslate nohighlight">\(s_3\)</span> is zero which corresponds to a non-basic variable as intended!</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>b/pivot</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></td>
+<td><p><strong>1</strong></p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>80$</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-odd"><td><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></td>
+<td><p><strong>2</strong></p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></td>
+<td><p><strong>1</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p><strong>1</strong></p></td>
+<td><p><strong>40</strong></p></td>
+<td><p><strong>40</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><strong>-3</strong></p></td>
+<td><p>-2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>Python implementation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>The Python implementation first finds the column. Subsequently, the restrictions are checked and the most restrictive is identified. The solution (2,0) uses zero indexing and essentially means third row, first column which corresponds to <span class="math notranslate nohighlight">\(s_3\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to determine the pivot element location</span>
 <span class="k">def</span> <span class="nf">get_pivot_position</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
     <span class="n">z</span> <span class="o">=</span> <span class="n">tableau</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">column</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">column</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
     
     <span class="n">restrictions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">eq</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
@@ -344,8 +682,93 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test on our example</span>
+<span class="n">get_pivot_position</span><span class="p">(</span><span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pivoting">
+<h2>Pivoting<a class="headerlink" href="#pivoting" title="Permalink to this headline">¶</a></h2>
+<p>Having decided which variables’ roles are swapped we need to make sure that we obtain a correct new simplex tableau. As noted before a proper simplex tableau can be identified by the basic variable columns featuring a single one and else only zeroes. We apply appropriate matrix manipulations to achieve this target:</p>
+<ul class="simple">
+<li><p>Obtaining the 1 is simple as the location is the pivot element. If the pivot element is not 1 we can divide the whole row by the current value and obtain a pivot row with a 1-entry in the pivot column.</p></li>
+<li><p>The zeroes are subsequently obtained by adding or subtracting the appropriate multiples of the pivot row from the other rows such that the pivot column takes zero values.</p></li>
+</ul>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>In our example the pivot element was one so the first step is not necessary. The other steps proceed as follows:</p>
+<ul class="simple">
+<li><p>Transform row 1 by subtracting row 3</p></li>
+<li><p>Transform row 2 by subtracting 2 times row 3</p></li>
+<li><p>Transform row 4 by adding 3 times row 3</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></th>
+<th class="head"><p>b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>-2</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>0</p></td>
+<td><p>-2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>3</p></td>
+<td><p>120</p></td>
+</tr>
+</tbody>
+</table>
+<p>Some remarks on the new tableau:</p>
+<ul class="simple">
+<li><p>The new solution is to produce 40 soldiers, have 40 hours of carpentry left over and 20 hours of finishing</p></li>
+<li><p>The objective value has increased from 0 to 120</p></li>
+<li><p>The soluton is not optimal, the objective coefficient of the <span class="math notranslate nohighlight">\(x_2\)</span> column is still negative <span class="math notranslate nohighlight">\(\rightarrow\)</span> next iteration</p></li>
+</ul>
+</div>
+<div class="section" id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<p>The python implementation leverages some clever numpy calls and is surprisingly compact.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to perform a pivot step on a tableau for a given pivot element</span>
 <span class="k">def</span> <span class="nf">pivot_step</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">pivot_position</span><span class="p">):</span>
     <span class="n">new_tableau</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">eq</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">]</span>
     
@@ -365,9 +788,142 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_basic</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tableau</span> <span class="o">=</span> <span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">pivot_step</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">get_pivot_position</span><span class="p">(</span><span class="n">tableau</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([ 0.,  1.,  1.,  0., -1., 40.]),
+ array([ 0.,  1.,  0.,  1., -2., 20.]),
+ array([ 1.,  0.,  0.,  0.,  1., 40.]),
+ array([  0.,  -2.,   0.,   0.,   3., 120.])]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="putting-it-all-together">
+<h2>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
+<p>We have now all the elements together and can instantiate the control flow illustrated above. Clearly, for manual calculation frequent pivoting can become fairly tedious. But the python program is super straightforward: Leveraging the <em>can_be_improved</em> function we can keep identifying the next pivot element and perform the pivot operations subsequently. For illustration purposes we first look at a verbose function which reports in-between tableaus and stops on the final tableau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simplex algorithm with intermediate results and pivot elements</span>
+<span class="k">def</span> <span class="nf">simplexVerbose</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">tableau</span> <span class="o">=</span> <span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        
+    <span class="k">while</span> <span class="n">can_be_improved</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">pivot_position</span> <span class="o">=</span> <span class="n">get_pivot_position</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">pivot_position</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">tableau</span> <span class="o">=</span> <span class="n">pivot_step</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">pivot_position</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simplexVerbose</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 0, 0, 80]
+[2, 1, 0, 1, 0, 100]
+[1, 0, 0, 0, 1, 40]
+[-3, -2, 0, 0, 0, 0]
+ 
+(2, 0)
+ 
+[ 0.  1.  1.  0. -1. 40.]
+[ 0.  1.  0.  1. -2. 20.]
+[ 1.  0.  0.  0.  1. 40.]
+[  0.  -2.   0.   0.   3. 120.]
+ 
+(1, 1)
+ 
+[ 0.  0.  1. -1.  1. 20.]
+[ 0.  1.  0.  1. -2. 20.]
+[ 1.  0.  0.  0.  1. 40.]
+[  0.   0.   0.   2.  -1. 160.]
+ 
+(0, 4)
+ 
+[ 0.  0.  1. -1.  1. 20.]
+[ 0.  1.  2. -1.  0. 60.]
+[ 1.  0. -1.  1.  0. 20.]
+[  0.   0.   1.   1.   0. 180.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>After three iterations we obtain the final tableau which can no longer be improved (everything positive in the bottom row). Note that in this condesed Python representation we can no longer directly see the labels of the rows. However, by looking at the columns with only zeroes and one 1 we can re-identify the basic variables and obtain the following rich representation of the final tableau:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_1\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_2\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></th>
+<th class="head"><p>b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(s_3\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>-1</p></td>
+<td><p>1</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>$<span class="math notranslate nohighlight">\(x_2\)</span>$</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>60</p></td>
+</tr>
+<tr class="row-even"><td><p>$<span class="math notranslate nohighlight">\(x_1\)</span>$</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>180</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can make the following interpretations:</p>
+<ul class="simple">
+<li><p>The optimal objective value is 180</p></li>
+<li><p>In optimum we produce 60 toy trains and 20 soldiers (both basic variables)</p></li>
+<li><p>The maximum soldier allowance is not binding and there is a positive slack of 20 which means <span class="math notranslate nohighlight">\(s_3\)</span> is not basic.</p></li>
+</ul>
+<p>Below is a purely result-focused implementation of the simplex algorithm. To use it more informatively it is sidelined by a get solution function which provides a proper representation of the result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper to identify basic columns</span>
+<span class="k">def</span> <span class="nf">is_basic</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">column</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">column</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">column</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
+<span class="c1"># helper to retrieve solution from tableau</span>
 <span class="k">def</span> <span class="nf">get_solution</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
     <span class="n">columns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
     <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
@@ -385,26 +941,27 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">A</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simplex algorithm only providing final solution</span>
+<span class="k">def</span> <span class="nf">simplex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">tableau</span> <span class="o">=</span> <span class="n">to_tableau</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">can_be_improved</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+        <span class="n">pivot_position</span> <span class="o">=</span> <span class="n">get_pivot_position</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+        <span class="n">tableau</span> <span class="o">=</span> <span class="n">pivot_step</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">pivot_position</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">get_solution</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">simplex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;solution: &#39;</span><span class="p">,</span> <span class="n">solution</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simplex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solution:  [20.0, 60.0, 0, 0, 20.0]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[20.0, 60.0, 0, 0, 20.0]
 </pre></div>
 </div>
 </div>
@@ -531,11 +1088,11 @@ BUT: Computational cost would then grow exponentially in the number of variables
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Simplex_Algorithm_19_0.png" src="_images/01_Simplex_Algorithm_19_0.png" />
+<img alt="_images/01_Simplex_Algorithm_30_0.png" src="_images/01_Simplex_Algorithm_30_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[20.0, 60.0, 0, 0, 20.0]
 </pre></div>
 </div>
-<img alt="_images/01_Simplex_Algorithm_19_2.png" src="_images/01_Simplex_Algorithm_19_2.png" />
+<img alt="_images/01_Simplex_Algorithm_30_2.png" src="_images/01_Simplex_Algorithm_30_2.png" />
 </div>
 </div>
 </div>
