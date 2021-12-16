@@ -332,9 +332,9 @@ the 𝑚 non-zero variables are called <em>basic variables</em> the remaining �
 <li><p>produce no soldiers with no carpenting left</p></li>
 <li><p>produce no soldiers with no finishing left</p></li>
 <li><p>produce no soldiers with no maxsoldiers left</p></li>
-<li><p>produce no trains with no finishing left</p></li>
-<li><p>produce no trains with no carpenting left</p></li>
-<li><p>produce no trains with no maxsoldiers left …</p></li>
+<li><p>produce no trains, no finishing left</p></li>
+<li><p>produce no trains, no carpenting left</p></li>
+<li><p>produce no trains, no maxsoldiers left …</p></li>
 </ul>
 <p>There are ten possible basic solutions, some are clearly not optimal (doing nothing) or infeasible (e.g., produce no soldiers with no maxsoldiers left). We could in principle solve the linear equation system for each configuration
 BUT: Computational cost would then grow exponentially in the number of variables.</p>
@@ -343,7 +343,7 @@ BUT: Computational cost would then grow exponentially in the number of variables
 <h2>The Simplex Algorithm<a class="headerlink" href="#the-simplex-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>We need a more efficient way to fix basic variables - this boils down to looking at as few solution candidates as possible. Obvious improvements over the naive approach are taking into account profitability (improvement of objective) and feasibility of alternative basic solutions. This is the basic idea of the Simplex algorithm.</p>
 <p>The simplex procedure constantly improves the current solution until an optimum is found. The high level flowchart is presented below:</p>
-<img src="images/simplexflow.png" alt="Drawing" style="width: 300px;"/><p>After the setting up the initial tableau the algorithm enters a loop conditional on the current solution being not optimal. Each algorithm iteration then proceeds by determining the pivot column (new basic variable to be included) and row (current basic variable to be removed) such that the the greatest improvement of the objective value is realized. The indidivudal steps are as follows:</p>
+<img src="https://user-images.githubusercontent.com/493486/146375891-4c3e062d-77ed-47ea-9159-df8f35106adb.png" alt="Drawing" style="width: 300px;"/><p>After the setting up the initial tableau the algorithm enters a loop conditional on the current solution being not optimal. Each algorithm iteration then proceeds by determining the pivot column (new basic variable to be included) and row (current basic variable to be removed) such that the the greatest improvement of the objective value is realized. The indidivudal steps are as follows:</p>
 <ul class="simple">
 <li><p>Build tableau: Convert the LP problem to standard form by transforming the objective function and constraints to equality.</p></li>
 <li><p>Check optimality: Check if all values in the bottom row are none-negative. If this is the case, the optimal solution is found. If not, continue to the next step.</p></li>
